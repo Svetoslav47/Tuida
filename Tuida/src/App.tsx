@@ -7,6 +7,7 @@ import Progress from "./pages/Progress";
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import { usePopInOnScroll } from "./hooks/usePopInOnScroll";
+import { LanguageProvider } from "./context/LanguageContext";
 
 export function App() {
     const [activeSection, setActiveSection] = useState(0);
@@ -30,6 +31,7 @@ export function App() {
     // Create an array of hooks for each section
     const popInHooks = sections.map(() => usePopInOnScroll());
     return (
+      <LanguageProvider>
       <Routes>
         <Route path="/" element={<Layout>
             <Navigation
@@ -59,5 +61,6 @@ export function App() {
         </Layout>} />
         <Route path="/:houseName" element={<Home />} />
         </Routes>
+        </LanguageProvider>
     );
 }
