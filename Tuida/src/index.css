@@ -23,3 +23,11 @@
   opacity: 0;
   transform: scale(0.8);
 }
+
+.dot-opacity {
+  opacity: 0.4;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.group:hover .dot-opacity {
+  opacity: 0.6;
+}

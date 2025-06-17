@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PhotoCard from '../components/PhotoCard';
 import LocationMap from '../components/LocationMap';
 import VideoPlayer from '../components/VideoPlayer';
+import InteractiveMap from '../components/InteractiveMap';
 const YourHome: React.FC = () => {
   const nearbyLocations = [{
     name: 'Central Park',
@@ -43,6 +44,7 @@ const YourHome: React.FC = () => {
         <VideoPlayer videoUrl="https://static.videezy.com/system/resources/previews/000/021/804/original/modern-house-time-lapse.mp4" title="Experience Tuida" description="Take a journey through our thoughtfully designed spaces and experience the harmony of modern architecture and natural elements." />
         <PhotoCard image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" title="Premium Interiors" description="Each residence is finished with premium materials selected for both beauty and durability. The kitchens feature custom cabinetry, stone countertops, and professional-grade appliances. Bathrooms are designed as personal sanctuaries with luxurious fixtures and thoughtful lighting. Throughout the homes, floor-to-ceiling windows frame stunning views while bringing abundant natural light into every corner." position="left" />
         <PhotoCard image="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" title="Community Spaces" description="Our complex features thoughtfully designed community spaces that encourage connection while respecting privacy. The landscaped courtyard provides a tranquil outdoor retreat, while the rooftop terrace offers panoramic views and entertainment areas. Additional amenities include a fitness center, co-working space, and secured parking facilities. Every detail has been considered to create a living experience that is both luxurious and practical." />
+        <InteractiveMap onHouseClick={() => {}} />
         <LocationMap locations={nearbyLocations} markers={markers} />
       </div>
     </div>;
