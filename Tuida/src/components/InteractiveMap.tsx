@@ -26,7 +26,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ onHouseClick }) => {
     {
       id: 2,
       name: 'Sunset House',
-      coords: '300,150,400,250',
+      coords: '310,65,375,100',
       position: {
         x: 50,
         y: 25,
@@ -62,7 +62,8 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ onHouseClick }) => {
   ]
   return (
     <div className="relative w-full">
-      <div className="relative">
+      <div className="absolute inset-0 bg-white/60 group-hover:bg-white/80 transition-all z-10 pointer-events-auto" />
+      <div className="relative z-20">
         <img
           src="https://uploadthingy.s3.us-west-1.amazonaws.com/ampbyVZyum2oxZLERJgYwf/image.png"
           alt="ARCHOUSE Development Map"
@@ -70,20 +71,27 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ onHouseClick }) => {
         />
         {houses.map((house) => {
           const isActive = activeHouse === house.id;
+          const [x1, y1, x2, y2] = house.coords.split(',').map(Number);
+          const left = Math.min(x1, x2);
+          const top = Math.min(y1, y2);
+          const width = Math.abs(x2 - x1);
+          const height = Math.abs(y2 - y1);
           return (
             <div
               key={house.id}
-              className="absolute w-8 h-8 flex items-center justify-center cursor-pointer transform -translate-x-1/2 -translate-y-1/2 group"
+              className="absolute group cursor-pointer"
               style={{
-                left: `${house.position.x}%`,
-                top: `${house.position.y}%`,
+                left: left,
+                top: top,
+                width: width,
+                height: height,
               }}
               onMouseEnter={() => setActiveHouse(house.id)}
               onMouseLeave={() => setActiveHouse(null)}
               onClick={() => onHouseClick(house.id)}
             >
               <div
-                className="w-3 h-3 bg-white rounded-full transition-transform dot-opacity group-hover:scale-150"
+                className={`w-full h-full bg-white/40 group-hover:bg-white/70 transition-all border-2 ${isActive ? 'border-black' : 'border-transparent'}`}
               />
               {isActive && (
                 <div
@@ -91,6 +99,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ onHouseClick }) => {
                   style={{ left: '100%', top: '50%', opacity: 1, borderRadius: 0, transform: 'translateY(-50%)' }}
                   onMouseEnter={() => setActiveHouse(house.id)}
                   onMouseLeave={() => setActiveHouse(null)}
+                  onClick={() => onHouseClick(house.id)}
                 >
                   {house.name}
                 </div>
