@@ -14,7 +14,7 @@ export function usePopInOnScroll() {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.01 }
     );
     observer.observe(node);
     return () => observer.disconnect();
