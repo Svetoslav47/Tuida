@@ -1,4 +1,5 @@
 import React from 'react';
+import { usePopInOnScroll } from '../hooks/usePopInOnScroll';
 interface PhotoCardProps {
   image: string;
   title: string;
@@ -11,7 +12,8 @@ const PhotoCard: React.FC<PhotoCardProps> = ({
   description,
   position = 'right'
 }) => {
-  return <div className="w-full flex flex-col md:flex-row my-24 items-center">
+  const { ref, isVisible } = usePopInOnScroll();
+  return <div ref={ref} className={`w-full flex flex-col md:flex-row my-24 items-center ${isVisible ? 'pop-in' : 'pop-in-hidden'}`}>
       <div className={`w-full md:w-7/12 aspect-square relative overflow-hidden group ${position === 'left' ? 'md:order-2' : 'md:order-1'}`}>
         <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
       </div>

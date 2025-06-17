@@ -2,3 +2,24 @@
 @import "tailwindcss";
 @import "tailwindcss/utilities";
 /* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pop-in {
+  opacity: 1;
+  animation: pop-in 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pop-in-hidden {
+  opacity: 0;
+  transform: scale(0.8);
+}
