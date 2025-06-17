@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import Gallery from '../components/Gallery'
 import FloorPlan from '../components/FloorPlan'
+import { FaCar, FaBed, FaExpand, FaArrowLeft } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
+import { usePopInOnScroll } from '../hooks/usePopInOnScroll'
+
 const House: React.FC = () => {
   const [activeFloor, setActiveFloor] = useState(0)
   const floorPlans = [
@@ -39,14 +43,41 @@ const House: React.FC = () => {
       alt: 'Bathroom',
     },
   ]
+  const navigate = useNavigate()
+  const { ref, isVisible } = usePopInOnScroll()
   return (
-    <div className="w-full min-h-screen bg-white">
+    <div ref={ref} className={`w-full min-h-screen bg-white ${isVisible ? 'pop-in' : 'pop-in-hidden'}`}>
       <div className="w-full h-[70vh] relative overflow-hidden">
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="absolute top-6 left-6 z-20 w-8 h-8 flex items-center justify-center rounded-full text-white transition-colors hover:bg-black hover:bg-opacity-70 focus:bg-black focus:bg-opacity-70"
+          aria-label="Back"
+        >
+          <FaArrowLeft className="text-lg" />
+        </button>
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
           alt="Modern House Exterior"
           className="w-full h-full object-cover"
         />
+        <div className="absolute bottom-16 left-16 flex flex-col gap-6 text-white max-w-[90vw]">
+          <span className="text-5xl font-bold tracking-wide mb-2" style={{fontFamily: 'inherit', textShadow: '4px 4px 16px rgba(0,0,0,0.95)'}}>ОРИОН</span>
+          <div className="flex gap-10 items-center text-lg">
+            <div className="flex items-center gap-2" style={{textShadow: '4px 4px 16px rgba(0,0,0,0.95)'}}>
+              <FaExpand className="text-4xl" />
+              <span className="text-base font-medium">205.3 м²</span>
+            </div>
+            <div className="flex items-center gap-2" style={{textShadow: '4px 4px 16px rgba(0,0,0,0.95)'}}>
+              <FaCar className="text-4xl" />
+              <span className="text-base font-medium">2 Паркоместа</span>
+            </div>
+            <div className="flex items-center gap-2" style={{textShadow: '4px 4px 16px rgba(0,0,0,0.95)'}}>
+              <FaBed className="text-4xl" />
+              <span className="text-base font-medium">4 Спални</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16 py-16">
         <h1 className="text-4xl font-light mb-6">Modern Villa</h1>
