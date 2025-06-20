@@ -12,7 +12,7 @@ docker info
 
 echo ""
 echo "=== Building Docker image with verbose output ==="
-docker build -t tuida-app:test . --no-cache --progress=plain
+docker build -t tuida-app:test . --no-cache
 
 if [ $? -eq 0 ]; then
     echo ""
