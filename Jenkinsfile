@@ -34,16 +34,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Add verbose output and error handling
-                    sh '''
-                        echo "Starting Docker build..."
-                        echo "Current directory: $(pwd)"
-                        echo "Files in current directory:"
-                        ls -la
-                        echo "Building Docker image: ${DOCKER_IMAGE}:${DOCKER_TAG}"
-                        docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . --no-cache --progress=plain
-                        echo "Docker build completed successfully"
-                    '''
+                    docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}")
                 }
             }
         }
@@ -72,11 +63,6 @@ pipeline {
         }
         failure {
             echo "Deployment failed!"
-            script {
-                // Show Docker images and containers for debugging
-                sh 'docker images'
-                sh 'docker ps -a'
-            }
         }
     }
 }

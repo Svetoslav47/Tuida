@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy package files
 COPY Tuida/package*.json ./
 
-# Install ALL dependencies (including dev dependencies needed for build)
-RUN npm ci
+# Install dependencies
+RUN npm ci --only=production
 
 # Copy source code
 COPY Tuida/ .
