@@ -35,7 +35,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<Layout>
             <Navigation
-                sections={sections.map((s) => s.title )}
+                sections={sections.map((s) => s.title)}
                 activeSection={activeSection}
                 setActiveSection={setActiveSection}
             />
