@@ -4,7 +4,6 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'tuida-app'
         DOCKER_TAG = "${env.BUILD_NUMBER}"
-        CONTAINER_PORT = "5678"
     }
 
     stages {
@@ -52,16 +51,12 @@ pipeline {
         stage('Deploy Docker Container') {
             steps {
                 script {
-                    // More thorough cleanup of existing containers
-                    sh '''
-                        echo "Cleaning up existing containers..."
-                        docker stop tuida-container || echo "No existing container to stop"
-                        docker rm tuida-container || echo "No existing container to remove"
-                        
-                        echo "Starting new container on port 5678..."
-                        docker run -d --name tuida-container -p 5678:80 ${DOCKER_IMAGE}:${DOCKER_TAG}
-                        echo "Container started successfully"
-                    '''
+                    // Stop and remove existing container if it exists
+                    sh 'docker stop tuida-container || true'
+                    sh 'docker rm tuida-container || true'
+                    
+                    // Run new container
+                    sh "docker run -d --name tuida-container -p 8080:80 ${DOCKER_IMAGE}:${DOCKER_TAG}"
                 }
             }
         }
@@ -73,11 +68,7 @@ pipeline {
             cleanWs()
         }
         success {
-            echo "Deployment successful! Application is running on port 5678"
-            script {
-                // Show running containers
-                sh 'docker ps'
-            }
+            echo "Deployment successful! Application is running on port 8080"
         }
         failure {
             echo "Deployment failed!"
