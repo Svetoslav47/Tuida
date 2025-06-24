@@ -23,13 +23,13 @@ pipeline {
             }
         }
         
-        // stage('Test Application') {
-        //     steps {
-        //         dir('Tuida') {
-        //             sh 'npm run lint'
-        //         }
-        //     }
-        // }
+        stage('Test Application') {
+            steps {
+                dir('Tuida') {
+                    sh 'npm run lint'
+                }
+            }
+        }
         
         stage('Build Docker Image') {
             steps {
