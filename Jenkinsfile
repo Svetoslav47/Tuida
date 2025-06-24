@@ -34,14 +34,14 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Add verbose output and error handling for legacy Docker
+                    // Add verbose output and error handling
                     sh '''
                         echo "Starting Docker build..."
                         echo "Current directory: $(pwd)"
                         echo "Files in current directory:"
                         ls -la
                         echo "Building Docker image: ${DOCKER_IMAGE}:${DOCKER_TAG}"
-                        docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . --no-cache
+                        docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . --no-cache --progress=plain
                         echo "Docker build completed successfully"
                     '''
                 }
