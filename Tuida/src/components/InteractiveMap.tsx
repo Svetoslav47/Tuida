@@ -582,6 +582,25 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
                         </div>
                       </foreignObject>
                     )}
+
+                    {/* Show house ID in the middle in edit mode */}
+                    {editMode && (
+                      <text
+                        x={bbox.centerX}
+                        y={bbox.centerY}
+                        textAnchor="middle"
+                        alignmentBaseline="middle"
+                        fontSize="24"
+                        fontWeight="bold"
+                        fill="black"
+                        stroke="white"
+                        strokeWidth="3"
+                        paintOrder="stroke"
+                        style={{ pointerEvents: 'none', userSelect: 'none' }}
+                      >
+                        {house.id}
+                      </text>
+                    )}
                   </g>
                 )
               })}
