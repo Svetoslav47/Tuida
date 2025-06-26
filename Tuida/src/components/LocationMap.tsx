@@ -37,15 +37,9 @@ const LocationMap: React.FC<LocationMapProps> = ({
     return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
   };
 
-  const center = markers?.length > 0 ? markers.reduce((acc, marker) => {
-    return {
-      lat: (acc.lat + marker.lat) / 2,
-      lng: (acc.lng + marker.lng) / 2,
-    };
-  }, { lat: 43.16358815508278, lng: 27.934571646944118 }) : { lat: 43.16358815508278, lng: 27.934571646944118 };
-
+  const center = markers[0]
   return <div className="w-full my-16">
-      <h3 className="text-xl font-light mb-8">Location & Nearby</h3>
+      <h3 className="text-xl font-light mb-8">Локация и околности</h3>
       <div className="w-full aspect-[16/9] bg-gray-100 mb-8 flex items-center justify-center">
         {isLoaded ? (
           <GoogleMap

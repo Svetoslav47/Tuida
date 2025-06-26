@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PhotoCard from '../components/PhotoCard';
 import LocationMap from '../components/LocationMap';
 import VideoPlayer from '../components/VideoPlayer';
 import InteractiveMap from '../components/InteractiveMap';
+import FeatureHighlights from '../components/FeatureHighlights';
 const YourHome: React.FC = () => {
   const nearbyLocations = [{
     name: 'Плаж Галата',
@@ -36,6 +37,7 @@ const YourHome: React.FC = () => {
         <InteractiveMap onHouseClick={(houseId) => {
           navigate(`/${houseId}`)
         }} />
+        <FeatureHighlights />
         <LocationMap locations={nearbyLocations} markers={markers} />
       </div>
     </div>;

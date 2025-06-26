@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import { usePopInOnScroll } from "./hooks/usePopInOnScroll";
 import { LanguageProvider } from "./context/LanguageContext";
+import Gallery from "./pages/Gallery";
 
 export function App() {
     const [activeSection, setActiveSection] = useState(0);
@@ -24,9 +25,14 @@ export function App() {
         },
         {
             id: 2,
-            title: "Прогрес",
+            title: "?Прогрес?",
             component: <Progress />,
         },
+        {
+            id: 3,
+            title: "Галерия",
+            component: <Gallery />,
+        }
     ];
     // Create an array of hooks for each section
     const popInHooks = sections.map(() => usePopInOnScroll());

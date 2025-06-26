@@ -1,7 +1,7 @@
 import React from 'react';
 const ContactForm: React.FC = () => {
   return <div className="w-full my-16">
-      <h3 className="text-xl font-light mb-8">Contact Us</h3>
+      <h3 className="text-xl font-light mb-8">Свържи се с нас</h3>
       <form className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>

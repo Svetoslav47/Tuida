@@ -17,10 +17,9 @@ const Us: React.FC = () => {
     distance: '20км',
     type: 'Transport'
   }];
-
   const sampleMarkers = [{
-    lat: 43.16071268761977,
-    lng: 27.932502927771097
+    lat: 43.217111504081494,
+    lng: 27.9242876007523
   }];
 
   return (
