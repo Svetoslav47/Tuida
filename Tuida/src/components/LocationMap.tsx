@@ -76,10 +76,9 @@ const LocationMap: React.FC<LocationMapProps> = ({
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {locations.map((location, index) => <div key={index} className="border-t pt-4">
-            <p className="font-light">{location.name}</p>
-            <div className="flex justify-between text-sm text-gray-500 mt-1">
-              <span>{location.type}</span>
-              <span>{location.distance}</span>
+            <div className="flex justify-between items-center">
+              <p className="font-light">{location.name}</p>
+              <span className="text-sm text-gray-500">{location.distance}</span>
             </div>
           </div>)}
       </div>

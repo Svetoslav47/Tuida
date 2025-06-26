@@ -6,46 +6,33 @@ import VideoPlayer from '../components/VideoPlayer';
 import InteractiveMap from '../components/InteractiveMap';
 const YourHome: React.FC = () => {
   const nearbyLocations = [{
-    name: 'Central Park',
-    distance: '0.5 miles',
-    type: 'Park'
+    name: 'Плаж Галата',
+    distance: '500м',
+    type: 'Luxary'
   }, {
-    name: 'Metro Station',
-    distance: '0.3 miles',
+    name: 'Градски Транспорт ',
+    distance: '0m',
     type: 'Transport'
   }, {
-    name: 'Grocery Store',
-    distance: '0.2 miles',
-    type: 'Shopping'
-  }, {
-    name: 'Elementary School',
-    distance: '0.7 miles',
-    type: 'Education'
-  }, {
-    name: 'Medical Center',
-    distance: '1.2 miles',
-    type: 'Healthcare'
-  }, {
-    name: 'Shopping Mall',
-    distance: '1.5 miles',
-    type: 'Shopping'
+    name: 'Летище Варна',
+    distance: '20км',
+    type: 'Transport'
   }];
 
   const markers = [{
-    lat: 43.16358815508278,
-    lng: 27.934571646944118
+    lat: 43.16071268761977,
+    lng: 27.932502927771097
   }];
   const navigate = useNavigate();
 
 
   return <div className="px-6 md:px-12 lg:px-16 py-6 h-full overflow-y-auto">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-light mb-6">Your Home</h1>
-          <Link to="/home"> Home </Link>
-        <PhotoCard image="/houseOutsideView2.jpg" title="Modern Living Spaces" description="Designed with simplicity and functionality in mind, our living spaces maximize natural light and create a seamless connection between indoor and outdoor environments. Each residence features open floor plans, premium materials, and thoughtful details that elevate everyday living. The architectural design emphasizes clean lines and uncluttered spaces, creating homes that are both visually striking and incredibly comfortable." />
+        <h1 className="text-4xl font-light mb-6">Твоят дом</h1>
+        <PhotoCard image="/houseOutsideView2.jpg" title="Модерни жилищни пространства" description="Създадени с акцент върху простотата и функционалността, нашите жилищни пространства осигуряват максимално естествено осветление и постигат безпроблемна връзка между вътрешната и външната среда. Всяка резиденция се отличава с просторни етажни планове, висококачествени материали и внимателно подбрани детайли, които издигат ежедневието на ново ниво. Архитектурният дизайн набляга на изчистени линии и освободени от излишни елементи пространства, превръщайки домовете във визуално впечатляващи и изключително комфортни убежища." />
         <VideoPlayer videoUrl="/video.mp4" title="Experience Tuida" description="Take a journey through our thoughtfully designed spaces and experience the harmony of modern architecture and natural elements." />
-        <PhotoCard image="/houseOutsideView1.jpg" title="Premium Interiors" description="Each residence is finished with premium materials selected for both beauty and durability. The kitchens feature custom cabinetry, stone countertops, and professional-grade appliances. Bathrooms are designed as personal sanctuaries with luxurious fixtures and thoughtful lighting. Throughout the homes, floor-to-ceiling windows frame stunning views while bringing abundant natural light into every corner." position="left" />
-        <PhotoCard image="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" title="Community Spaces" description="Our complex features thoughtfully designed community spaces that encourage connection while respecting privacy. The landscaped courtyard provides a tranquil outdoor retreat, while the rooftop terrace offers panoramic views and entertainment areas. Additional amenities include a fitness center, co-working space, and secured parking facilities. Every detail has been considered to create a living experience that is both luxurious and practical." />
+        <PhotoCard image="/houseOutsideView1.jpg" title="Вътрешни пространства" description="Нашите двуетажни къщи предлагат просторни интериори, които умело разделят зоните за отдих и развлечения от личните пространства. Всеки етаж е оптимизиран за максимален комфорт и функционалност. Обмисленото разпределение на стаите гарантира уединение и спокойствие на горния етаж, докато първият етаж е идеален за социални събирания и семейни дейности, създавайки идеалния баланс за модерен начин на живот." position="left" />
+        <PhotoCard image="/housePageBanner.jpg" title="Общи пространства" description="Нашият комплекс предлага внимателно проектирани общи пространства, които насърчават свързването, същевременно зачитайки личното пространство. Озелененият двор осигурява спокойно място за отдих на открито, докато покривната тераса предлага панорамни гледки. Допълнителните удобства включват места за паркиране и спокойни алеи за придвижване. Всеки детайл е обмислен, за да създаде жилищно преживяване, което е едновременно луксозно и практично." />
         <InteractiveMap onHouseClick={(houseId) => {
           navigate(`/${houseId}`)
         }} />

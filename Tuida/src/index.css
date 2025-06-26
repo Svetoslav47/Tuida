@@ -1,7 +1,21 @@
+/* Import Sofia Sans font */
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+
 /* PLEASE NOTE: THESE TAILWIND IMPORTS SHOULD NEVER BE DELETED */
 @import "tailwindcss";
 @import "tailwindcss/utilities";
 /* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
+
+/* Global font settings */
+* {
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: 300;
+}
+
+body {
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: 300;
+}
 
 @keyframes pop-in {
   0% {

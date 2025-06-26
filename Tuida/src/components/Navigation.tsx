@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLanguage } from '../context/LanguageContext';
+// import { useLanguage } from '../context/LanguageContext';
 
 interface NavigationProps {
   sections: string[];
@@ -11,7 +11,7 @@ const Navigation: React.FC<NavigationProps> = ({
   activeSection,
   setActiveSection
 }) => {
-  const { language, toggleLanguage } = useLanguage();
+  // const { language, toggleLanguage } = useLanguage();
   return <nav className="px-6 md:px-12 lg:px-16 mb-8 flex justify-between items-center">
   <div className="flex space-x-8">
     {sections.map((section, index) => (
@@ -24,12 +24,12 @@ const Navigation: React.FC<NavigationProps> = ({
       </button>
     ))}
   </div>
-  <button
+  {/* <button
     onClick={toggleLanguage}
     className="text-sm tracking-wider pb-2 text-gray-400 hover:text-gray-800 transition-all"
   >
     {language}
-  </button>
+  </button> */}
 </nav>
 };
 export default Navigation;

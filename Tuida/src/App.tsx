@@ -14,17 +14,17 @@ export function App() {
     const sections = [
         {
             id: 0,
-            title: "Your Home",
+            title: "Твоят дом",
             component: <YourHome />,
         },
         {
             id: 1,
-            title: "Us",
+            title: "За нас",
             component: <Us />,
         },
         {
             id: 2,
-            title: "Progress",
+            title: "Прогрес",
             component: <Progress />,
         },
     ];

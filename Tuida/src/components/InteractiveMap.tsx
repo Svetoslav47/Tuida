@@ -8,6 +8,33 @@ interface Vertex {
 interface House {
   id: number
   name: string
+  house_area?: number
+  full_area?: number
+  price?: number | null
+  state: string
+  first_floor?: {
+    short_description: string
+    floor_plan: {
+      image: string
+      rooms: Array<{
+        name: string
+        area: number
+      }>
+    }
+  }
+  second_floor?: {
+    short_description: string
+    floor_plan: {
+      image: string
+      rooms: Array<{
+        name: string
+        area: number
+      }>
+    }
+  }
+  image: string
+  number_of_parking_spaces: number
+  number_of_bedrooms: number
   vertices: Vertex[]
 }
 
@@ -322,6 +349,10 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
     const newHouse: House = {
       id: nextId,
       name: 'Vila',
+      state: 'free',
+      image: 'type1-min.jpg',
+      number_of_parking_spaces: 2,
+      number_of_bedrooms: 4,
       vertices: [
         { x: centerX, y: centerY },
         { x: centerX + 200, y: centerY },
@@ -372,6 +403,9 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
       centerY: (Math.min(...ys) + Math.max(...ys)) / 2,
     }
   }
+
+  // Get the active house data
+  const activeHouseData = houses.find(house => house.id === activeHouse)
 
   return (
     <div className="relative w-full">
@@ -433,7 +467,7 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
       )}
 
       <div className="relative">
-        <div className="absolute inset-0 bg-white/60 group-hover:bg-white/80 transition-all z-10 pointer-events-auto" />
+        {/* Remove the transparent overlay */}
         
         {/* Debug info */}
         {showDebug && imageDimensions && (
@@ -457,6 +491,85 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
           </div>
         )}
 
+        {/* Rich hover tooltip */}
+        {activeHouseData && !editMode && (
+          <div 
+            className="absolute z-40 bg-white rounded-lg shadow-xl border border-gray-200 p-4 max-w-sm"
+            style={{
+              left: (() => {
+                const bbox = getBoundingBox(activeHouseData.vertices)
+                const houseRightEdge = (bbox.maxX / SVG_WIDTH) * 100
+                const tooltipWidth = 20 // Approximate tooltip width in percentage
+                
+                // If house is near the right edge, position tooltip to the left
+                if (houseRightEdge > 70) {
+                  return `${(bbox.minX / SVG_WIDTH) * 100 - tooltipWidth - 2}%`
+                }
+                // Otherwise position to the right
+                return `${houseRightEdge + 2}%`
+              })(),
+              top: (() => {
+                const bbox = getBoundingBox(activeHouseData.vertices)
+                const houseCenterY = (bbox.centerY / SVG_HEIGHT) * 100
+                const tooltipHeight = 15 // Approximate tooltip height in percentage
+                
+                // If house is near the bottom, position tooltip above
+                if (houseCenterY > 70) {
+                  return `${houseCenterY - tooltipHeight - 5}%`
+                }
+                // If house is near the top, position tooltip below
+                else if (houseCenterY < 30) {
+                  return `${houseCenterY + 5}%`
+                }
+                // Otherwise center vertically
+                else {
+                  return `${houseCenterY - tooltipHeight / 2}%`
+                }
+              })(),
+              transform: 'none'
+            }}
+          >
+            <div className="flex gap-3">
+              <div className="w-32 h-32 flex-shrink-0">
+                <img
+                  src={`/${activeHouseData.image}`}
+                  alt={activeHouseData.name}
+                  className="w-full h-full object-cover rounded"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-bold text-lg text-gray-900 mb-2">{activeHouseData.name}</h3>
+                <div className="space-y-1 text-sm text-gray-600">
+                  <div className="flex justify-between">
+                    <span>Площ:</span>
+                    <span className="font-medium">{activeHouseData.house_area || activeHouseData.full_area} м²</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Спални:</span>
+                    <span className="font-medium">{activeHouseData.number_of_bedrooms}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Паркоместа:</span>
+                    <span className="font-medium">{activeHouseData.number_of_parking_spaces}</span>
+                  </div>
+                  {activeHouseData.price && (
+                    <div className="flex justify-between">
+                      <span>Цена:</span>
+                      <span className="font-medium">{activeHouseData.price.toLocaleString()} лв.</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between">
+                    <span>Статус: </span>
+                    <span className={`font-medium ml-1`}>
+                      {activeHouseData.state === 'free' ? 'Свободна' : 'Заета'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="relative z-20">
           <img
             ref={imageRef}
@@ -471,6 +584,14 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
               style={{ top: 0, left: 0 }}
               viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
               preserveAspectRatio="xMidYMid meet"
+              onMouseMove={(e) => {
+                // Mouse move is handled by individual polygon onMouseEnter/onMouseLeave
+              }}
+              onMouseLeave={() => {
+                if (!editMode) {
+                  setActiveHouse(null)
+                }
+              }}
             >
               {/* Debug grid */}
               {showDebug && (
@@ -506,22 +627,18 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
                 const isActive = activeHouse === house.id
                 const points = verticesToPoints(house.vertices)
                 const bbox = getBoundingBox(house.vertices)
-                const labelWidth = 120
-                const labelHeight = 32
-                const offset = 16
                 
                 return (
                   <g key={house.id}>
                     <polygon
                       points={points}
                       className="cursor-pointer pointer-events-auto"
-                      fill={isActive ? 'rgba(255, 255, 255, 0.7)' : 'rgba(255, 255, 255, 0.4)'}
+                      fill={isActive ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.3)'}
                       stroke={editMode ? 'blue' : (isActive ? 'black' : 'transparent')}
                       strokeWidth={editMode ? "3" : "2"}
                       onMouseEnter={() => {
                         if (!editMode) setActiveHouse(house.id)
                       }}
-                      onMouseMove={undefined}
                       onMouseLeave={() => {
                         if (!editMode) setActiveHouse(null)
                       }}
@@ -557,31 +674,6 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
                         )}
                       </g>
                     ))}
-                    
-                    {isActive && !editMode && (
-                      <foreignObject
-                        x={bbox.maxX + offset}
-                        y={bbox.centerY - labelHeight / 2}
-                        width={labelWidth}
-                        height={labelHeight}
-                        className="pointer-events-auto"
-                      >
-                        <div
-                          className="bg-white/80 text-black px-2 py-1 text-sm shadow-lg whitespace-nowrap rounded"
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            textAlign: 'center',
-                            fontWeight: 600
-                          }}
-                        >
-                          {house.name}
-                        </div>
-                      </foreignObject>
-                    )}
 
                     {/* Show house ID in the middle in edit mode */}
                     {editMode && (
