@@ -10,25 +10,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   description
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [shouldAutoplay, setShouldAutoplay] = useState(false);
-
-  useEffect(() => {
-    const node = videoRef.current;
-    if (!node) return;
-    let hasPlayed = false;
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasPlayed) {
-          setShouldAutoplay(true);
-          hasPlayed = true;
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
 
   return <div className="w-full my-24">
       <div className="w-full aspect-video bg-black overflow-hidden">
@@ -37,8 +18,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           className="w-full h-full object-cover"
           controls
           playsInline
-          autoPlay={shouldAutoplay}
-          muted={shouldAutoplay}
+          autoPlay={true}
+          muted={true}
         >
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
