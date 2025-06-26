@@ -1,52 +1,107 @@
-import React, { useState } from 'react'
-import Gallery from '../components/Gallery'
+import React, { useState, useEffect } from 'react'
 import FloorPlan from '../components/FloorPlan'
 import { FaCar, FaBed, FaExpand, FaArrowLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { usePopInOnScroll } from '../hooks/usePopInOnScroll'
+import Contact from '../components/ContactForm'
 
-const House: React.FC = () => {
+interface House {
+  id: number
+  name: string
+  house_area?: number
+  full_area?: number
+  price?: number | null
+  state: string
+  first_floor?: {
+    short_description: string
+    floor_plan: {
+      image: string
+      rooms: Array<{
+        name: string
+        area: number
+      }>
+    }
+  }
+  second_floor?: {
+    short_description: string
+    floor_plan: {
+      image: string
+      rooms: Array<{
+        name: string
+        area: number
+      }>
+    }
+  }
+  image: string
+  number_of_parking_spaces: number
+  number_of_bedrooms: number
+  vertices: Array<{
+    x: number
+    y: number
+  }>
+}
+
+const Home: React.FC = () => {
   const [activeFloor, setActiveFloor] = useState(0)
-  const floorPlans = [
+  const [houseData, setHouseData] = useState<House | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [zoomOpen, setZoomOpen] = useState(false)
+
+  const { ref, isVisible } = usePopInOnScroll()
+
+  useEffect(() => {
+    const fetchHouseData = async () => {
+      try {
+        const response = await fetch('/houses.json')
+        const houses: House[] = await response.json()
+        // Use the first house from the JSON
+        setHouseData(houses[0])
+      } catch (error) {
+        console.error('Error fetching house data:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchHouseData()
+  }, [])
+
+  const floorPlans = houseData ? [
     {
       id: 0,
-      name: '1st Floor',
-      image:
-        'https://images.unsplash.com/photo-1632392720073-08c59b21c640?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1800&q=80',
+      name: 'Първи Етаж',
+      image: houseData.first_floor?.floor_plan.image || '/floorPlan1Type1.webp',
     },
     {
       id: 1,
-      name: '2nd Floor',
-      image:
-        'https://images.unsplash.com/photo-1632392720073-08c59b21c640?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1800&q=80',
+      name: 'Втори Етаж',
+      image: houseData.second_floor?.floor_plan.image || '/floorPlan2Type1.webp',
     },
-  ]
-  const galleryImages = [
-    {
-      id: 1,
-      url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c',
-      alt: 'Living Room',
-    },
-    {
-      id: 2,
-      url: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3',
-      alt: 'Kitchen',
-    },
-    {
-      id: 3,
-      url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
-      alt: 'Master Bedroom',
-    },
-    {
-      id: 4,
-      url: 'https://images.unsplash.com/photo-1600573472591-ee6981cf35b6',
-      alt: 'Bathroom',
-    },
-  ]
+  ] : []
+
   const navigate = useNavigate()
-  const { ref, isVisible } = usePopInOnScroll()
+
+  if (loading) {
+    return (
+      <div className="w-full min-h-screen bg-white flex items-center justify-center">
+        <div className="text-gray-600">Loading...</div>
+      </div>
+    )
+  }
+
+  if (!houseData) {
+    return (
+      <div className="w-full min-h-screen bg-white flex items-center justify-center">
+        <div className="text-gray-600">House data not found</div>
+      </div>
+    )
+  }
+
   return (
-    <div ref={ref} className={`w-full min-h-screen bg-white ${isVisible ? 'pop-in' : 'pop-in-hidden'}`}>
+    <div
+      ref={ref}
+      className={`w-full min-h-screen bg-white ${!loading && isVisible ? 'pop-in' : ''}`}
+    >
       <div className="w-full h-[70vh] relative overflow-hidden">
         {/* Back Button */}
         <button
@@ -57,59 +112,31 @@ const House: React.FC = () => {
           <FaArrowLeft className="text-lg" />
         </button>
         <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
-          alt="Modern House Exterior"
+          src={houseData.image || "/type1-min.jpg"}
+          alt={`${houseData.name} Exterior`}
           className="w-full h-full object-cover"
         />
         <div className="absolute bottom-16 left-16 flex flex-col gap-6 text-white max-w-[90vw]">
-          <span className="text-5xl font-bold tracking-wide mb-2" style={{fontFamily: 'inherit', textShadow: '4px 4px 16px rgba(0,0,0,0.95)'}}>ОРИОН</span>
+          <span className="text-5xl font-bold tracking-wide mb-2" style={{fontFamily: 'inherit', textShadow: '4px 4px 16px rgba(0,0,0,0.95)'}}>{houseData.name}</span>
           <div className="flex gap-10 items-center text-lg">
             <div className="flex items-center gap-2" style={{textShadow: '4px 4px 16px rgba(0,0,0,0.95)'}}>
               <FaExpand className="text-4xl" />
-              <span className="text-base font-medium">205.3 м²</span>
+              <span className="text-base font-medium">{houseData.house_area || houseData.full_area} м²</span>
             </div>
             <div className="flex items-center gap-2" style={{textShadow: '4px 4px 16px rgba(0,0,0,0.95)'}}>
               <FaCar className="text-4xl" />
-              <span className="text-base font-medium">2 Паркоместа</span>
+              <span className="text-base font-medium">{houseData.number_of_parking_spaces} Паркоместа</span>
             </div>
             <div className="flex items-center gap-2" style={{textShadow: '4px 4px 16px rgba(0,0,0,0.95)'}}>
               <FaBed className="text-4xl" />
-              <span className="text-base font-medium">4 Спални</span>
+              <span className="text-base font-medium">{houseData.number_of_bedrooms} Спални</span>
             </div>
           </div>
         </div>
       </div>
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16 py-16">
-        <h1 className="text-4xl font-light mb-6">Modern Villa</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-          <div className="md:col-span-2">
-            <p className="text-gray-600 leading-relaxed">
-              This stunning modern villa seamlessly blends contemporary
-              architecture with natural elements. Featuring four bedrooms, three
-              bathrooms, and expansive living areas, the home offers the perfect
-              balance of luxury and comfort. Floor-to-ceiling windows throughout
-              maximize natural light and provide breathtaking views of the
-              surrounding landscape.
-            </p>
-          </div>
-          <div className="space-y-4">
-            <div>
-              <h3 className="text-sm font-medium">Size</h3>
-              <p className="text-gray-600">3,500 sq ft</p>
-            </div>
-            <div>
-              <h3 className="text-sm font-medium">Bedrooms</h3>
-              <p className="text-gray-600">4</p>
-            </div>
-            <div>
-              <h3 className="text-sm font-medium">Bathrooms</h3>
-              <p className="text-gray-600">3</p>
-            </div>
-          </div>
-        </div>
-        <Gallery images={galleryImages} />
-        <div className="mt-24">
-          <h2 className="text-2xl font-light mb-8">Floor Plans</h2>
+        <div className="">
+          <h2 className="text-3xl font-light mb-8">Разпределение</h2>
           <div className="flex space-x-4 mb-8">
             {floorPlans.map((floor) => (
               <button
@@ -121,10 +148,42 @@ const House: React.FC = () => {
               </button>
             ))}
           </div>
-          <FloorPlan image={floorPlans[activeFloor].image} />
+          <div className="flex flex-col md:flex-row gap-8 items-start">
+            <div className="w-full md:w-7/10 p-6">
+              <h3 className="text-lg font-semibold mb-4">Стаи и Площи</h3>
+              <ul className="space-y-2">
+                {(activeFloor === 0
+                  ? houseData.first_floor?.floor_plan.rooms
+                  : houseData.second_floor?.floor_plan.rooms
+                )?.map((room, idx) => (
+                  <li key={idx} className="flex justify-between border-b pb-2 last:border-b-0">
+                    <span className="text-gray-700">{room.name}</span>
+                    <span className="text-gray-500">{room.area} м²</span>
+                  </li>
+                )) || <li className="text-gray-400">No rooms data available.</li>}
+              </ul>
+            </div>
+            <div className="w-full md:w-3/10 md:pl-8 flex flex-col items-center h-full">
+              <div className="cursor-zoom-in w-full h-full flex items-center" style={{height: '100%'}} onClick={() => setZoomOpen(true)}>
+                <FloorPlan image={floorPlans[activeFloor].image} className="h-full border-0" />
+              </div>
+            </div>
+          </div>
+          {zoomOpen && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80" onClick={() => setZoomOpen(false)}>
+              <img
+                src={floorPlans[activeFloor].image}
+                alt="Zoomed Floor Plan"
+                className="max-w-3xl max-h-[90vh] rounded shadow-lg border-4 border-white"
+                onClick={e => e.stopPropagation()}
+              />
+            </div>
+          )}
         </div>
+        <Contact />
       </div>
     </div>
   )
 }
-export default House
+export default Home
+

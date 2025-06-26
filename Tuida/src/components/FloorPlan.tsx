@@ -1,11 +1,12 @@
 import React from 'react'
 interface FloorPlanProps {
   image: string
+  className?: string
 }
-const FloorPlan: React.FC<FloorPlanProps> = ({ image }) => {
+const FloorPlan: React.FC<FloorPlanProps> = ({ image, className }) => {
   return (
-    <div className="w-full border border-gray-200">
-      <div className="aspect-[16/9] relative overflow-hidden">
+    <div className={`w-full border border-gray-200 ${className || ''}`}>
+      <div className="relative overflow-hidden h-full">
         <img
           src={image}
           alt="Floor Plan"

@@ -30,18 +30,16 @@ const ContactForm: React.FC = () => {
       <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
           <h4 className="text-sm font-medium mb-2">Email</h4>
-          <p className="text-gray-600">contact@tuida.com</p>
+          <p className="text-gray-600">sales@tuida.life</p>
         </div>
         <div>
           <h4 className="text-sm font-medium mb-2">Phone</h4>
-          <p className="text-gray-600">+1 (555) 123-4567</p>
+          <p className="text-gray-600">+359 89 251 7200</p>
         </div>
         <div>
           <h4 className="text-sm font-medium mb-2">Address</h4>
           <p className="text-gray-600">
-            123 Architecture Blvd
-            <br />
-            Design District, CA 90210
+            ул. Генерал Колев 92, гр. Варна
           </p>
         </div>
       </div>
