@@ -584,9 +584,7 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
               style={{ top: 0, left: 0 }}
               viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
               preserveAspectRatio="xMidYMid meet"
-              onMouseMove={(e) => {
-                // Mouse move is handled by individual polygon onMouseEnter/onMouseLeave
-              }}
+           
               onMouseLeave={() => {
                 if (!editMode) {
                   setActiveHouse(null)
