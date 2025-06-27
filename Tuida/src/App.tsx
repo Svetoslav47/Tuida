@@ -26,18 +26,18 @@ export function App() {
         },
         {
             id: 2,
-            title: "За нас",
-            component: <Us />,
-        },
-        {
-            id: 3,
             title: "Прогрес",
             component: <Progress />,
         },
         {
-            id: 4,
+            id: 3,
             title: "Галерия",
             component: <Gallery />,
+        },
+        {
+            id: 4,
+            title: "За нас",
+            component: <Us />,
         }
     ];
     // Create an array of hooks for each section
