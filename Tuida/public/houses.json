@@ -37,7 +37,7 @@
         ]
       }
     },
-    "image": "type1-min.jpg",
+    "image": "k1.webp",
     "number_of_parking_spaces": 2,
     "number_of_bedrooms": 4,
     "vertices": [
@@ -56,8 +56,67 @@
   {
     "id": 2,
     "name": "Бейд",
-    "house_area": null,
-    "full_area": null,
+    "house_area": 205.3,
+    "full_area": 402,
+    "price": null,
+    "state": "free",
+    "first_floor": {
+      "short_description": "Дневна с кухня, тоалетна, дрешник, техническо помещение, антре, веранда",
+      "floor_plan": {
+        "image": "k2fPlan1.webp",
+        "rooms": [
+          { "name": "Веранда", "area": 21 },
+          { "name": "Дневна с Кухня", "area": 44.2 },
+          { "name": "Коридор", "area": 5.5 },
+          { "name": "Сервизно Помещение", "area": 9 },
+          { "name": "Дрешник", "area": 5.1 },
+          { "name": "WC", "area": 2.8 }
+        ]
+      }
+    },
+    "second_floor": {
+      "short_description": "2 спални със собствени бани, 2 спални, баня, мокро помещение, коридор",
+      "floor_plan": {
+        "image": "k2fPlan2.webp",
+        "rooms": [
+          { "name": "Спалня", "area": 14.7 },
+          { "name": "Баня", "area": 5.3 },
+          { "name": "Спалня", "area": 11.6 },
+          { "name": "Баня", "area": 5.3 },
+          { "name": "Спалня", "area": 10.9 },
+          { "name": "Спалня", "area": 11.3 },
+          { "name": "Баня", "area": 4.7 },
+          { "name": "Склад / Мокро Помещение", "area": 3.8 },
+          { "name": "Коридор", "area": 11 }
+        ]
+      }
+    },
+    "image": "k2and2f.webp",
+    "number_of_parking_spaces": 2,
+    "number_of_bedrooms": 4,
+    "vertices": [
+      { "x": 3155, "y": 1979 },
+      { "x": 3644, "y": 1979 },
+      { "x": 3662, "y": 2293 },
+      { "x": 3668, "y": 2583 },
+      { "x": 3674, "y": 2732 },
+      { "x": 3698, "y": 3145 },
+      { "x": 3240, "y": 3014 },
+      { "x": 2956, "y": 2791 },
+      { "x": 2751, "y": 2598 },
+      { "x": 2380, "y": 2452 },
+      { "x": 2025, "y": 2375 },
+      { "x": 1709, "y": 2352 },
+      { "x": 1930, "y": 2221 },
+      { "x": 2238, "y": 2221 },
+      { "x": 3161, "y": 2282 }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Лира",
+    "house_area": 204.5,
+    "full_area": 402,
     "price": null,
     "state": "free",
     "first_floor": {
@@ -91,37 +150,9 @@
         ]
       }
     },
-    "image": "type1-min.jpg",
+    "image": "k1.webp",
     "number_of_parking_spaces": 2,
     "number_of_bedrooms": 4,
-    "vertices": [
-      { "x": 3155, "y": 1979 },
-      { "x": 3644, "y": 1979 },
-      { "x": 3662, "y": 2293 },
-      { "x": 3668, "y": 2583 },
-      { "x": 3674, "y": 2732 },
-      { "x": 3698, "y": 3145 },
-      { "x": 3240, "y": 3014 },
-      { "x": 2956, "y": 2791 },
-      { "x": 2751, "y": 2598 },
-      { "x": 2380, "y": 2452 },
-      { "x": 2025, "y": 2375 },
-      { "x": 1709, "y": 2352 },
-      { "x": 1930, "y": 2221 },
-      { "x": 2238, "y": 2221 },
-      { "x": 3161, "y": 2282 }
-    ]
-  },
-  {
-    "id": 3,
-    "name": "Лира",
-    "house_area": null,
-    "full_area": null,
-    "price": null,
-    "state": "free",
-    "image": null,
-    "number_of_parking_spaces": null,
-    "number_of_bedrooms": null,
     "vertices": [
       { "x": 952, "y": 918 },
       { "x": 1298, "y": 918 },
@@ -193,14 +224,45 @@
   },
   {
     "id": 6,
-    "name": "Бетелейзе",
-    "house_area": null,
-    "full_area": null,
+    "name": "Бетелгейзе",
+    "house_area": 204.5,
+    "full_area": 402,
     "price": null,
     "state": "free",
-    "image": null,
-    "number_of_parking_spaces": null,
-    "number_of_bedrooms": null,
+    "first_floor": {
+      "short_description": "Дневна с кухня, тоалетна, дрешник, техническо помещение, антре, веранда",
+      "floor_plan": {
+        "image": "floorPlan1Type1.webp",
+        "rooms": [
+          { "name": "Веранда", "area": 21 },
+          { "name": "Дневна с Кухня", "area": 42.8 },
+          { "name": "Коридор", "area": 5.5 },
+          { "name": "Сервизно Помещение", "area": 9 },
+          { "name": "Дрешник", "area": 4.6 },
+          { "name": "WC", "area": 2.5 }
+        ]
+      }
+    },
+    "second_floor": {
+      "short_description": "2 спални със собствени бани, 2 спални, баня, мокро помещение, коридор",
+      "floor_plan": {
+        "image": "floorPlan2Type1.webp",
+        "rooms": [
+          { "name": "Спалня", "area": 14.1 },
+          { "name": "Баня", "area": 5.1 },
+          { "name": "Спалня", "area": 11.2 },
+          { "name": "Баня", "area": 4.5 },
+          { "name": "Спалня", "area": 10.4 },
+          { "name": "Спалня", "area": 10.9 },
+          { "name": "Баня", "area": 4.5 },
+          { "name": "Склад / Мокро Помещение", "area": 3.6 },
+          { "name": "Коридор", "area": 11 }
+        ]
+      }
+    },
+    "image": "k1.webp",
+    "number_of_parking_spaces": 2,
+    "number_of_bedrooms": 4,
     "vertices": [
       { "x": 2630, "y": 1410 },
       { "x": 3043, "y": 1410 },
@@ -217,13 +279,44 @@
   {
     "id": 7,
     "name": "Андромеда",
-    "house_area": null,
-    "full_area": null,
+   "house_area": 205.3,
+    "full_area": 402,
     "price": null,
     "state": "free",
-    "image": null,
-    "number_of_parking_spaces": null,
-    "number_of_bedrooms": null,
+    "first_floor": {
+      "short_description": "Дневна с кухня, тоалетна, дрешник, техническо помещение, антре, веранда",
+      "floor_plan": {
+        "image": "k2fPlan1.webp",
+        "rooms": [
+          { "name": "Веранда", "area": 21 },
+          { "name": "Дневна с Кухня", "area": 44.2 },
+          { "name": "Коридор", "area": 5.5 },
+          { "name": "Сервизно Помещение", "area": 9 },
+          { "name": "Дрешник", "area": 5.1 },
+          { "name": "WC", "area": 2.8 }
+        ]
+      }
+    },
+    "second_floor": {
+      "short_description": "2 спални със собствени бани, 2 спални, баня, мокро помещение, коридор",
+      "floor_plan": {
+        "image": "k2fPlan2.webp",
+        "rooms": [
+          { "name": "Спалня", "area": 14.7 },
+          { "name": "Баня", "area": 5.3 },
+          { "name": "Спалня", "area": 11.6 },
+          { "name": "Баня", "area": 5.3 },
+          { "name": "Спалня", "area": 10.9 },
+          { "name": "Спалня", "area": 11.3 },
+          { "name": "Баня", "area": 4.7 },
+          { "name": "Склад / Мокро Помещение", "area": 3.8 },
+          { "name": "Коридор", "area": 11 }
+        ]
+      }
+    },
+    "image": "k2and2f.webp",
+    "number_of_parking_spaces": 2,
+    "number_of_bedrooms": 4,
     "vertices": [
       { "x": 3650, "y": 1434 },
       { "x": 4087, "y": 1440 },
@@ -261,13 +354,44 @@
   {
     "id": 9,
     "name": "Алиа",
-    "house_area": null,
-    "full_area": null,
+    "house_area": 205.3,
+    "full_area": 402,
     "price": null,
     "state": "free",
-    "image": null,
-    "number_of_parking_spaces": null,
-    "number_of_bedrooms": null,
+    "first_floor": {
+      "short_description": "Дневна с кухня, тоалетна, дрешник, техническо помещение, антре, веранда",
+      "floor_plan": {
+        "image": "k2fPlan1.webp",
+        "rooms": [
+          { "name": "Веранда", "area": 21 },
+          { "name": "Дневна с Кухня", "area": 44.2 },
+          { "name": "Коридор", "area": 5.5 },
+          { "name": "Сервизно Помещение", "area": 9 },
+          { "name": "Дрешник", "area": 5.1 },
+          { "name": "WC", "area": 2.8 }
+        ]
+      }
+    },
+    "second_floor": {
+      "short_description": "2 спални със собствени бани, 2 спални, баня, мокро помещение, коридор",
+      "floor_plan": {
+        "image": "k2fPlan2.webp",
+        "rooms": [
+          { "name": "Спалня", "area": 14.7 },
+          { "name": "Баня", "area": 5.3 },
+          { "name": "Спалня", "area": 11.6 },
+          { "name": "Баня", "area": 5.3 },
+          { "name": "Спалня", "area": 10.9 },
+          { "name": "Спалня", "area": 11.3 },
+          { "name": "Баня", "area": 4.7 },
+          { "name": "Склад / Мокро Помещение", "area": 3.8 },
+          { "name": "Коридор", "area": 11 }
+        ]
+      }
+    },
+    "image": "k2and2f.webp",
+    "number_of_parking_spaces": 2,
+    "number_of_bedrooms": 4,
     "vertices": [
       { "x": 2108, "y": 954 },
       { "x": 2485, "y": 954 },
@@ -393,13 +517,44 @@
   {
     "id": 14,
     "name": "Хека",
-    "house_area": null,
-    "full_area": null,
+    "house_area": 205.3,
+    "full_area": 402,
     "price": null,
     "state": "free",
-    "image": null,
-    "number_of_parking_spaces": null,
-    "number_of_bedrooms": null,
+    "first_floor": {
+      "short_description": "Дневна с кухня, тоалетна, дрешник, техническо помещение, антре, веранда",
+      "floor_plan": {
+        "image": "k2fPlan1.webp",
+        "rooms": [
+          { "name": "Веранда", "area": 21 },
+          { "name": "Дневна с Кухня", "area": 44.2 },
+          { "name": "Коридор", "area": 5.5 },
+          { "name": "Сервизно Помещение", "area": 9 },
+          { "name": "Дрешник", "area": 5.1 },
+          { "name": "WC", "area": 2.8 }
+        ]
+      }
+    },
+    "second_floor": {
+      "short_description": "2 спални със собствени бани, 2 спални, баня, мокро помещение, коридор",
+      "floor_plan": {
+        "image": "k2fPlan2.webp",
+        "rooms": [
+          { "name": "Спалня", "area": 14.7 },
+          { "name": "Баня", "area": 5.3 },
+          { "name": "Спалня", "area": 11.6 },
+          { "name": "Баня", "area": 5.3 },
+          { "name": "Спалня", "area": 10.9 },
+          { "name": "Спалня", "area": 11.3 },
+          { "name": "Баня", "area": 4.7 },
+          { "name": "Склад / Мокро Помещение", "area": 3.8 },
+          { "name": "Коридор", "area": 11 }
+        ]
+      }
+    },
+    "image": "k2and2f.webp",
+    "number_of_parking_spaces": 2,
+    "number_of_bedrooms": 4,
     "vertices": [
       { "x": 1488, "y": 652 },
       { "x": 1835, "y": 652 },
@@ -484,13 +639,44 @@
   {
     "id": 18,
     "name": "Мира",
-    "house_area": null,
-    "full_area": null,
+    "house_area": 205.3,
+    "full_area": 402,
     "price": null,
     "state": "free",
-    "image": null,
-    "number_of_parking_spaces": null,
-    "number_of_bedrooms": null,
+    "first_floor": {
+      "short_description": "Дневна с кухня, тоалетна, дрешник, техническо помещение, антре, веранда",
+      "floor_plan": {
+        "image": "k2fPlan1.webp",
+        "rooms": [
+          { "name": "Веранда", "area": 21 },
+          { "name": "Дневна с Кухня", "area": 44.2 },
+          { "name": "Коридор", "area": 5.5 },
+          { "name": "Сервизно Помещение", "area": 9 },
+          { "name": "Дрешник", "area": 5.1 },
+          { "name": "WC", "area": 2.8 }
+        ]
+      }
+    },
+    "second_floor": {
+      "short_description": "2 спални със собствени бани, 2 спални, баня, мокро помещение, коридор",
+      "floor_plan": {
+        "image": "k2fPlan2.webp",
+        "rooms": [
+          { "name": "Спалня", "area": 14.7 },
+          { "name": "Баня", "area": 5.3 },
+          { "name": "Спалня", "area": 11.6 },
+          { "name": "Баня", "area": 5.3 },
+          { "name": "Спалня", "area": 10.9 },
+          { "name": "Спалня", "area": 11.3 },
+          { "name": "Баня", "area": 4.7 },
+          { "name": "Склад / Мокро Помещение", "area": 3.8 },
+          { "name": "Коридор", "area": 11 }
+        ]
+      }
+    },
+    "image": "k2and2f.webp",
+    "number_of_parking_spaces": 2,
+    "number_of_bedrooms": 4,
     "vertices": [
       { "x": 1926, "y": 456 },
       { "x": 2199, "y": 450 },
