@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import FloorPlan from '../components/FloorPlan'
 import { FaCar, FaBed, FaExpand, FaArrowLeft } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { usePopInOnScroll } from '../hooks/usePopInOnScroll'
-import Contact from '../components/ContactForm'
+import ContactForm from '../components/ContactForm'
 
 interface House {
   id: number
@@ -46,6 +46,7 @@ const Home: React.FC = () => {
   const [houseData, setHouseData] = useState<House | null>(null)
   const [loading, setLoading] = useState(true)
   const [zoomOpen, setZoomOpen] = useState(false)
+  const { houseName } = useParams<{ houseName: string }>()
 
   const { ref, isVisible } = usePopInOnScroll()
 
@@ -54,8 +55,18 @@ const Home: React.FC = () => {
       try {
         const response = await fetch('/houses.json')
         const houses: House[] = await response.json()
-        // Use the first house from the JSON
-        setHouseData(houses[0])
+        
+        // Convert houseName to number and find the specific house
+        const houseId = parseInt(houseName || '1', 10)
+        const foundHouse = houses.find(house => house.id === houseId)
+        
+        if (foundHouse) {
+          setHouseData(foundHouse)
+        } else {
+          console.error(`House with ID ${houseId} not found`)
+          // Fallback to first house if the requested house is not found
+          setHouseData(houses[0])
+        }
       } catch (error) {
         console.error('Error fetching house data:', error)
       } finally {
@@ -64,7 +75,7 @@ const Home: React.FC = () => {
     }
 
     fetchHouseData()
-  }, [])
+  }, [houseName])
 
   const floorPlans = houseData ? [
     {
@@ -180,7 +191,7 @@ const Home: React.FC = () => {
             </div>
           )}
         </div>
-        <Contact />
+        <ContactForm />
       </div>
     </div>
   )
