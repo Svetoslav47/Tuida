@@ -32,13 +32,13 @@ const Gallery: React.FC = () => {
     {
       id: 3,
       image: '/type1-min.jpg',
-      title: 'Интериор тип 1',
+      title: 'Къщи тип 1 и 2',
       category: 'Екстериор',
     },
     {
       id: 4,
       image: '/type2-min.jpg',
-      title: 'Интериор тип 2', 
+      title: 'Къща тип 4', 
       category: 'Екстериор',
     },
     {
@@ -51,6 +51,12 @@ const Gallery: React.FC = () => {
       id: 6,
       image: '/k2and2f.webp',
       title: 'Къща тип 2',
+      category: 'Екстериор',
+    },
+    {
+      id: 7,
+      image: '/k3and3f.webp',
+      title: 'Къща тип 3',
       category: 'Екстериор',
     },
   ]
