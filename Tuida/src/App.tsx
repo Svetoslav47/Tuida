@@ -25,7 +25,7 @@ export function App() {
         },
         {
             id: 2,
-            title: "?Прогрес?",
+            title: "Прогрес",
             component: <Progress />,
         },
         {
