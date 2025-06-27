@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import YourHome from "./pages/YourHome";
+import Houses from "./pages/Houses";
 import Us from "./pages/Us";
 import Progress from "./pages/Progress";
 import Navigation from "./components/Navigation";
@@ -20,16 +21,21 @@ export function App() {
         },
         {
             id: 1,
+            title: "Къщите",
+            component: <Houses />,
+        },
+        {
+            id: 2,
             title: "За нас",
             component: <Us />,
         },
         {
-            id: 2,
+            id: 3,
             title: "Прогрес",
             component: <Progress />,
         },
         {
-            id: 3,
+            id: 4,
             title: "Галерия",
             component: <Gallery />,
         }

@@ -12,7 +12,7 @@ const Layout: React.FC<LayoutProps> = ({
             <img 
               src="/logoTuida.png" 
               alt="Tuida Logo" 
-              className="h-12 w-auto"
+              className="h-16 w-auto"
             />
             <h1 className="text-3xl font-light tracking-wider">ТУИДА</h1>
           </div>
