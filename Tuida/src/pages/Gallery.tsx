@@ -59,6 +59,12 @@ const Gallery: React.FC = () => {
       title: 'Къща тип 3',
       category: 'Екстериор',
     },
+    {
+      id: 8,
+      image: '/k1.webp',
+      title: 'Къща тип 1',
+      category: 'Екстериор',
+    },
   ]
 
   const handleImageClick = (item: GalleryItem) => {
