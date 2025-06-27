@@ -36,7 +36,7 @@ export function App() {
         },
         {
             id: 4,
-            title: "За нас",
+            title: "Контакти",
             component: <Us />,
         }
     ];
