@@ -51,7 +51,7 @@ export function App() {
     return (
       <LanguageProvider>
       <Routes>
-        <Route path="/" element={<Layout>
+        <Route path="/" element={<Layout onLogoClick={() => setActiveSection(0)}>
             <Navigation
                 sections={sections.map((s) => s.title)}
                 activeSection={activeSection}
