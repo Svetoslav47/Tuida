@@ -34,7 +34,7 @@ const YourHome: React.FC = () => {
           </div>
           
           {/* Bottom content overlay */}
-          <div className="absolute bottom-0 left-0 right-0 flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center text-white text-center px-4 sm:px-8 pb-4 sm:pb-6">
+          <div className="absolute bottom-0 left-0 right-0 hidden sm:flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center text-white text-center px-4 sm:px-8 pb-4 sm:pb-6">
             <div className="flex items-center gap-2 text-sm sm:text-base">
               <FaHome className="text-xl sm:text-2xl" />
               <span>Модерни жилищни пространства</span>
@@ -54,7 +54,7 @@ const YourHome: React.FC = () => {
         <div className="mb-12 sm:mb-16">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-4 sm:mb-6">
-              Вашият дом в ТУИДА HOMES
+              Вашият дом в ТУИДА ХОУМС
             </h2>
             <p className="text-gray-600 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed">
               Открийте перфектния баланс между модерния комфорт и природната красота. 

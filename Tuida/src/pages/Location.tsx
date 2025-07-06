@@ -43,8 +43,8 @@ const Location: React.FC = () => {
             <div>
               <img
                 src="/houseOutsideView2.jpg"
-                alt="ТУИДА HOMES - Локация"
-                className="w-full h-64 lg:h-80 object-cover rounded-lg shadow-lg"
+                alt="ТУИДА ХОУМС - Локация"
+                className="w-full h-64 lg:h-80 object-cover shadow-lg"
               />
             </div>
             <div>

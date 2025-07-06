@@ -11,10 +11,10 @@ const Layout: React.FC<LayoutProps> = ({
           <div className="flex items-center gap-3 sm:gap-6">
             <img 
               src="/logoTuida.png" 
-              alt="ТУИДА HOMES Logo" 
+              alt="ТУИДА ХОУМС Logo" 
               className="h-12 sm:h-16 w-auto"
             />
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-light tracking-wider">ТУИДА HOMES</h1>
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-light tracking-wider">ТУИДА ХОУМС</h1>
           </div>
         </div>
       </header>

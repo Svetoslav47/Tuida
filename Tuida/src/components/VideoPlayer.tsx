@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 interface VideoPlayerProps {
   videoUrl: string;
   title: string;
@@ -10,13 +10,25 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   description
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   return <div className="w-full my-12 sm:my-16 md:my-24">
       <div className="w-full aspect-video bg-black overflow-hidden">
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
-          controls
+          controls={!isMobile}
           playsInline
           autoPlay={true}
           muted={true}
