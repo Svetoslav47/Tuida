@@ -54,7 +54,7 @@ const YourHome: React.FC = () => {
         <div className="mb-12 sm:mb-16">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-4 sm:mb-6">
-              Вашият дом в ТУИДА ХОУМС
+              Вашият дом
             </h2>
             <p className="text-gray-600 text-sm sm:text-base max-w-3xl mx-auto leading-relaxed">
               Открийте перфектния баланс между модерния комфорт и природната красота. 

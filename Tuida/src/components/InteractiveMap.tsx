@@ -51,7 +51,6 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ onHouseClick }) => {
   const [isDragging, setIsDragging] = useState(false)
   const [debugHouses, setDebugHouses] = useState<House[]>([])
   const [originalHouses, setOriginalHouses] = useState<House[]>([])
-  const [mobileViewStyle, setMobileViewStyle] = useState<'clean' | 'cards'>('clean')
   const imageRef = useRef<HTMLImageElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
   
@@ -470,6 +469,17 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
                     </span>
                   </div>
                 </div>
+                <div className="mt-3 sm:mt-4">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onHouseClick(house.id);
+                    }}
+                    className="w-full sm:w-auto px-4 py-2 text-sm font-light border border-gray-300 hover:border-gray-400 transition-colors"
+                  >
+                    Покажи повече
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -478,98 +488,13 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
     </div>
   )
 
-  // Card mobile house list component
-  const CardMobileHouseList = () => (
-    <div className="w-full my-8 sm:my-16">
-      <h2 className="text-xl sm:text-2xl font-light mb-8 sm:mb-12 text-center">Къщи в комплекса</h2>
-      <div className="grid gap-4">
-        {houses.map((house) => (
-          <div 
-            key={house.id}
-            className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow cursor-pointer"
-            onClick={() => onHouseClick(house.id)}
-          >
-            <div className="flex gap-4">
-              <div className="w-24 h-24 flex-shrink-0">
-                <img
-                  src={`/${house.image}`}
-                  alt={house.name}
-                  className="w-full h-full object-cover rounded"
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-bold text-base text-gray-900 mb-2">
-                  {house.name} - {getHouseType(house.image)}
-                </h3>
-                <div className="grid grid-cols-2 gap-2 text-sm text-gray-600">
-                  <div className="flex justify-between">
-                    <span>РЗП:</span>
-                    <span className="font-medium">{house.house_area} м²</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Парцела:</span>
-                    <span className="font-medium">{house.full_area} м²</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Спални:</span>
-                    <span className="font-medium">{house.number_of_bedrooms}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Паркоместа:</span>
-                    <span className="font-medium">{house.number_of_parking_spaces}</span>
-                  </div>
-                </div>
-                <div className="mt-2 flex justify-between items-center">
-                  <span className={`text-sm font-medium px-2 py-1 rounded ${
-                    house.state === 'free' 
-                      ? 'bg-green-100 text-green-800' 
-                      : 'bg-red-100 text-red-800'
-                  }`}>
-                    {house.state === 'free' ? 'Свободна' : 'Заета'}
-                  </span>
-                  {house.price && (
-                    <span className="text-sm font-bold text-gray-900">
-                      {house.price.toLocaleString()} лв.
-                    </span>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
+
 
   return (
     <div className="relative w-full">
       {/* Mobile view - house list */}
       <div className="block sm:hidden">
-        <div className="flex justify-center mb-6">
-          <div className="flex bg-gray-100 rounded-lg p-1">
-            <button
-              onClick={() => setMobileViewStyle('clean')}
-              className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                mobileViewStyle === 'clean'
-                  ? 'bg-white text-gray-900 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Минимален
-            </button>
-            <button
-              onClick={() => setMobileViewStyle('cards')}
-              className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                mobileViewStyle === 'cards'
-                  ? 'bg-white text-gray-900 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Карти
-            </button>
-          </div>
-        </div>
-        {mobileViewStyle === 'clean' ? <CleanMobileHouseList /> : <CardMobileHouseList />}
+        <CleanMobileHouseList />
       </div>
       
       {/* Desktop view - interactive map */}
