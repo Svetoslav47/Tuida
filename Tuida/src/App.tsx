@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import { usePopInOnScroll } from "./hooks/usePopInOnScroll";
 import { LanguageProvider } from "./context/LanguageContext";
 import Gallery from "./pages/Gallery";
+import Location from "./pages/Location";
 
 export function App() {
     const [activeSection, setActiveSection] = useState(0);
@@ -36,6 +37,11 @@ export function App() {
         },
         {
             id: 4,
+            title: "Локация",
+            component: <Location />,
+        },
+        {
+            id: 5,
             title: "Контакти",
             component: <Us />,
         }

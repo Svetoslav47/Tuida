@@ -118,7 +118,7 @@
     "house_area": 204.5,
     "full_area": 412.75,
     "price": null,
-    "state": "free",
+    "state": "taken",
     "first_floor": {
       "short_description": "Дневна с кухня, тоалетна, дрешник, техническо помещение, антре, веранда",
       "floor_plan": {
@@ -230,8 +230,38 @@
     "house_area": 282.1,
     "full_area": 591.73,
     "price": null,
-    "state": "taken",
-    "image": "interactiveMap.jpg",
+    "first_floor": {
+      "short_description": "Дневна с кухня, кабинет, дрешник, тоалетна, техническо помещение, антре ,веранда",
+      "floor_plan": {
+        "image": "k4Plan1.webp",
+        "rooms": [
+          { "name": "Веранда", "area": 14.1 },
+          { "name": "Дневна с Кухня", "area": 61.6 },
+          { "name": "Кабинет", "area": 19.7 },
+          { "name": "Сервизно Помещение", "area": 9 },
+          { "name": "Дрешник", "area": 4.6 },
+          { "name": "WC", "area": 2.4 }
+        ]
+      }
+    },
+    "second_floor": {
+      "short_description": "3 спални с бани, спалня, баня, мокро помещение, коридор",
+      "floor_plan": {
+        "image": "k4Plan2.webp",
+        "rooms": [
+          { "name": "Спалня", "area": 14.1 },
+          { "name": "Баня", "area": 5.1 },
+          { "name": "Спалня", "area": 21 },
+          { "name": "Баня", "area": 5.1 },
+          { "name": "Спалня", "area": 21 },
+          { "name": "Спалня", "area": 21.3 },
+          { "name": "Баня", "area": 4.2 },
+          { "name": "Склад", "area": 3.6 },
+          { "name": "Коридор", "area": 11 }
+        ]
+      }
+    },
+    "image": "k4.webp",
     "number_of_parking_spaces": 2,
     "number_of_bedrooms": 4,
     "vertices": [

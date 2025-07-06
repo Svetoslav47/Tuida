@@ -38,9 +38,9 @@ const LocationMap: React.FC<LocationMapProps> = ({
   };
 
   const center = markers[0]
-  return <div className="w-full my-16">
-      <h3 className="text-xl font-light mb-8">Локация и околности</h3>
-      <div className="w-full aspect-[16/9] bg-gray-100 mb-8 flex items-center justify-center">
+  return <div className="w-full my-8 sm:my-16">
+      <h3 className="text-lg sm:text-xl font-light mb-4 sm:mb-8">Локация и околности</h3>
+      <div className="w-full aspect-[16/9] bg-gray-100 mb-6 sm:mb-8 flex items-center justify-center">
         {isLoaded ? (
           <GoogleMap
             mapContainerStyle={{ width: '100%', height: '100%' }}
@@ -68,11 +68,11 @@ const LocationMap: React.FC<LocationMapProps> = ({
           </div>
         )}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {locations.map((location, index) => <div key={index} className="border-t pt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {locations.map((location, index) => <div key={index} className="border-t pt-3 sm:pt-4">
             <div className="flex justify-between items-center">
-              <p className="font-light">{location.name}</p>
-              <span className="text-sm text-gray-500">{location.distance}</span>
+              <p className="font-light text-sm sm:text-base">{location.name}</p>
+              <span className="text-xs sm:text-sm text-gray-500">{location.distance}</span>
             </div>
           </div>)}
       </div>

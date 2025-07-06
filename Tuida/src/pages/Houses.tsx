@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LocationMap from '../components/LocationMap';
 import InteractiveMap from '../components/InteractiveMap';
 
+interface NearbyLocation {
+  id: number;
+  name: string;
+  distance: string;
+  type: string;
+  description: string;
+}
+
 const Houses: React.FC = () => {
-  const nearbyLocations = [{
-    name: 'Плаж Галата',
-    distance: '500м',
-    type: 'Luxary'
-  }, {
-    name: 'Градски Транспорт ',
-    distance: '0m',
-    type: 'Transport'
-  }, {
-    name: 'Летище Варна',
-    distance: '20км',
-    type: 'Transport'
-  }];
+  const [nearbyLocations, setNearbyLocations] = useState<NearbyLocation[]>([]);
+
+  useEffect(() => {
+    const fetchNearbyLocations = async () => {
+      try {
+        const response = await fetch('/nearbyLocations.json');
+        const data: NearbyLocation[] = await response.json();
+        setNearbyLocations(data);
+      } catch (error) {
+        console.error('Error loading nearby locations:', error);
+        setNearbyLocations([]);
+      }
+    };
+
+    fetchNearbyLocations();
+  }, []);
 
   const markers = [{
     lat: 43.16071268761977,
@@ -25,10 +36,10 @@ const Houses: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="px-6 md:px-12 lg:px-16 py-6 h-full overflow-y-auto">
+    <div className="px-4 sm:px-6 md:px-12 lg:px-16 py-4 sm:py-6 h-full overflow-y-auto">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-2xl font-light mb-8">Къщите</h1>
-        <p className="text-gray-600 max-w-2xl mb-12">
+        <h1 className="text-xl sm:text-2xl font-light mb-4 sm:mb-8">Къщите</h1>
+        <p className="text-sm sm:text-base text-gray-600 max-w-2xl mb-8 sm:mb-12">
           Разгледайте нашите къщи на интерактивната карта. Кликнете върху всяка къща, за да видите подробна информация за нея.
         </p>
         <InteractiveMap onHouseClick={(houseId) => {

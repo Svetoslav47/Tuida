@@ -404,6 +404,15 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
     }
   }
 
+  // Function to determine house type based on image name
+  const getHouseType = (imageName: string): string => {
+    if (imageName.includes('k1')) return 'Тип 1'
+    if (imageName.includes('k2')) return 'Тип 2'
+    if (imageName.includes('k3')) return 'Тип 3'
+    if (imageName.includes('k4')) return 'Тип 4'
+    return 'Неизвестен тип'
+  }
+
   // Get the active house data
   const activeHouseData = houses.find(house => house.id === activeHouse)
 
@@ -494,12 +503,12 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
         {/* Rich hover tooltip */}
         {activeHouseData && !editMode && (
           <div 
-            className="absolute z-40 bg-white rounded-lg shadow-xl border border-gray-200 p-4 max-w-sm"
+            className="absolute z-40 bg-white rounded-lg shadow-xl border border-gray-200 p-3 sm:p-4 max-w-[280px] sm:max-w-sm"
             style={{
               left: (() => {
                 const bbox = getBoundingBox(activeHouseData.vertices)
                 const houseRightEdge = (bbox.maxX / SVG_WIDTH) * 100
-                const tooltipWidth = 20 // Approximate tooltip width in percentage
+                const tooltipWidth = window.innerWidth < 640 ? 25 : 20 // Larger tooltip width on mobile
                 
                 // If house is near the right edge, position tooltip to the left
                 if (houseRightEdge > 70) {
@@ -511,7 +520,7 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
               top: (() => {
                 const bbox = getBoundingBox(activeHouseData.vertices)
                 const houseCenterY = (bbox.centerY / SVG_HEIGHT) * 100
-                const tooltipHeight = 15 // Approximate tooltip height in percentage
+                const tooltipHeight = window.innerWidth < 640 ? 20 : 15 // Larger tooltip height on mobile
                 
                 // If house is near the bottom, position tooltip above
                 if (houseCenterY > 70) {
@@ -529,8 +538,8 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
               transform: 'none'
             }}
           >
-            <div className="flex gap-3">
-              <div className="w-32 h-32 flex-shrink-0">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <div className="w-full sm:w-32 h-24 sm:h-32 flex-shrink-0">
                 <img
                   src={`/${activeHouseData.image}`}
                   alt={activeHouseData.name}
@@ -538,11 +547,17 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
                 />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-bold text-lg text-gray-900 mb-2">{activeHouseData.name}</h3>
-                <div className="space-y-1 text-sm text-gray-600">
+                <h3 className="font-bold text-base sm:text-lg text-gray-900 mb-1 sm:mb-2">
+                  {activeHouseData.name} - {getHouseType(activeHouseData.image)}
+                </h3>
+                <div className="space-y-1 text-xs sm:text-sm text-gray-600">
                   <div className="flex justify-between">
-                    <span>Площ:</span>
-                    <span className="font-medium">{activeHouseData.house_area || activeHouseData.full_area} м²</span>
+                    <span>РЗП:</span>
+                    <span className="font-medium">{activeHouseData.house_area} м²</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Площ на парцела:</span>
+                    <span className="font-medium">{activeHouseData.full_area} м²</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Спални:</span>
@@ -574,7 +589,7 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
           <img
             ref={imageRef}
             src="/interactiveMap.jpg"
-            alt="ARCHOUSE Development Map"
+            alt="ТУИДА HOMES Development Map"
             className="w-full h-auto"
           />
           {imageDimensions && (
