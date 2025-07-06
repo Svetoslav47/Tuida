@@ -1,52 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PhotoCard from '../components/PhotoCard';
 import FeatureHighlights from '../components/FeatureHighlights';
 import { FaHome, FaLeaf, FaUsers } from 'react-icons/fa';
 
-interface House {
-  id: number;
-  name: string;
-  house_area?: number;
-  full_area?: number;
-  price?: number | null;
-  state: string;
-  image: string;
-  number_of_parking_spaces: number;
-  number_of_bedrooms: number;
-  vertices: Array<{ x: number; y: number }>;
-}
 
 const YourHome: React.FC = () => {
-  const [totalArea, setTotalArea] = useState<number>(0);
-  const [houseCount, setHouseCount] = useState<number>(0);
-
-  useEffect(() => {
-    const fetchHousesData = async () => {
-      try {
-        const response = await fetch('/houses.json');
-        const houses: House[] = await response.json();
-        
-        // Calculate total area from all houses
-        const total = houses.reduce((sum, house) => {
-          return sum + (house.full_area || 0);
-        }, 0);
-        
-        setTotalArea(total);
-        setHouseCount(houses.length);
-      } catch (error) {
-        console.error('Error fetching houses data:', error);
-        setTotalArea(0);
-        setHouseCount(0);
-      }
-    };
-
-    fetchHousesData();
-  }, []);
-
   return (
     <div className="px-4 sm:px-6 md:px-12 lg:px-16 py-4 sm:py-6 h-full overflow-y-auto">
       <div className="max-w-6xl mx-auto">
-        <div className="relative w-full h-[60vh] sm:h-[70vh] mb-8 sm:mb-16 overflow-hidden rounded-2xl">
+        <div className="relative w-full h-[60vh] sm:h-[70vh] mb-8 sm:mb-16 overflow-hidden">
           <video
             className="w-full h-full object-cover"
             autoPlay
@@ -61,27 +23,29 @@ const YourHome: React.FC = () => {
           {/* Overlay with gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
           
-          {/* Content overlay */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4 sm:px-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4 sm:mb-6 tracking-wide">
-              ТУИДА HOMES
+          {/* Top content overlay */}
+          <div className="absolute top-0 left-0 right-0 flex flex-col items-center text-white text-center px-4 sm:px-8 pt-8 sm:pt-12">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-1 sm:mb-2 tracking-wide">
+              ТУИДА ХОУМС
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl font-light mb-6 sm:mb-8 max-w-2xl sm:max-w-3xl leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl font-light max-w-2xl sm:max-w-3xl leading-relaxed tracking-widest">
               Вашият дом сред природата
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center">
-              <div className="flex items-center gap-2 text-sm sm:text-base">
-                <FaHome className="text-xl sm:text-2xl" />
-                <span>Модерни жилищни пространства</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm sm:text-base">
-                <FaLeaf className="text-xl sm:text-2xl" />
-                <span>Хармония с природата</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm sm:text-base">
-                <FaUsers className="text-xl sm:text-2xl" />
-                <span>Общностен дух</span>
-              </div>
+          </div>
+          
+          {/* Bottom content overlay */}
+          <div className="absolute bottom-0 left-0 right-0 flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center text-white text-center px-4 sm:px-8 pb-4 sm:pb-6">
+            <div className="flex items-center gap-2 text-sm sm:text-base">
+              <FaHome className="text-xl sm:text-2xl" />
+              <span>Модерни жилищни пространства</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm sm:text-base">
+              <FaLeaf className="text-xl sm:text-2xl" />
+              <span>Хармония с природата</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm sm:text-base">
+              <FaUsers className="text-xl sm:text-2xl" />
+              <span>Общностен дух</span>
             </div>
           </div>
         </div>
@@ -98,27 +62,7 @@ const YourHome: React.FC = () => {
               които създават идеалната среда за вашия начин на живот.
             </p>
           </div>
-          
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
-            <div className="bg-gray-50 p-6 sm:p-8 rounded-xl text-center border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">{houseCount}</div>
-              <div className="text-sm sm:text-base text-gray-700 font-medium">Къщи</div>
-              <div className="text-xs text-gray-600 mt-1">В комплекса</div>
-            </div>
-            <div className="bg-gray-50 p-6 sm:p-8 rounded-xl text-center border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">{Math.round(totalArea)}</div>
-              <div className="text-sm sm:text-base text-gray-700 font-medium">Обща квадратура (м²)</div>
-              <div className="text-xs text-gray-600 mt-1">На комплекса</div>
-            </div>
-            <div className="bg-gray-50 p-6 sm:p-8 rounded-xl text-center border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">100%</div>
-              <div className="text-sm sm:text-base text-gray-700 font-medium">Качество</div>
-              <div className="text-xs text-gray-600 mt-1">Гарантирано</div>
-            </div>
-          </div>
         </div>
-
         {/* Main Content */}
         <PhotoCard 
           image="/houseOutsideView2.jpg" 
