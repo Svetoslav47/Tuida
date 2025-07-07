@@ -29,7 +29,7 @@ const YourHome: React.FC = () => {
               ТУИДА ХОУМС
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl font-light max-w-2xl sm:max-w-3xl leading-relaxed tracking-widest">
-              Вашият дом сред природата
+              Твоят дом сред природата
             </p>
           </div>
           
@@ -54,7 +54,7 @@ const YourHome: React.FC = () => {
         <div className="mb-12 sm:mb-16">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-4 sm:mb-6">
-              Вашият дом
+              Твоят дом
             </h2>
             <p className="text-gray-600 text-sm sm:text-base leading-relaxed text-justify">
               TUIDA HOMES е бутиков комплекс, който впечатлява с внимателно подбрана локация и

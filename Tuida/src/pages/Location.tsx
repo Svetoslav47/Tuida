@@ -26,10 +26,10 @@ const Location: React.FC = () => {
 
     fetchNearbyLocations();
   }, []);
-
+  
   const markers = [{
-    lat: 43.217111504081494,
-    lng: 27.9242876007523
+    lat: 43.160741,
+    lng: 27.932247
   }];
 
   return (

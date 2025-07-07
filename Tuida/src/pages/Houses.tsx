@@ -28,7 +28,6 @@ const Houses: React.FC = () => {
 
     fetchNearbyLocations();
   }, []);
-
   const markers = [{
     lat: 43.16071268761977,
     lng: 27.932502927771097
