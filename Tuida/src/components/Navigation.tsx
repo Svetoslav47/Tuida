@@ -96,9 +96,9 @@ const Navigation: React.FC<NavigationProps> = ({
                   {sections.map((section, index) => (
                     <button
                       key={index}
-                      className={`block w-full text-left py-3 px-4 rounded-lg transition-all ${
+                      className={`block w-full text-left py-3 px-4 transition-all ${
                         activeSection === index 
-                          ? 'bg-black text-white' 
+                          ? 'border-t border-b border-black border-opacity-30 text-black' 
                           : 'text-gray-600 hover:bg-gray-100'
                       }`}
                       onClick={() => handleSectionClick(index)}
