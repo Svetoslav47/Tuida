@@ -20,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({
           <div className="flex items-center gap-3 sm:gap-6">
             <img 
               src="/logoTuida.png" 
-              alt="ТУИДА ХОУМС Logo" 
+              alt="ТУИДА Logo" 
               className="h-12 sm:h-16 w-auto cursor-pointer"
               onClick={handleLogoClick}
             />
@@ -28,7 +28,7 @@ const Layout: React.FC<LayoutProps> = ({
               className="text-xl sm:text-2xl md:text-3xl font-light tracking-wider cursor-pointer hover:text-gray-600 transition-colors"
               onClick={handleLogoClick}
             >
-              ТУИДА ХОУМС
+              ТУИДА
             </h1>
           </div>
         </div>

@@ -666,11 +666,12 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
             </div>
           )}
 
+
           <div className="relative z-20">
             <img
               ref={imageRef}
               src="/interactiveMap.jpg"
-              alt="ТУИДА ХОУМС Development Map"
+              alt="ТУИДА Development Map"
               className="w-full h-auto"
             />
             {imageDimensions && (
