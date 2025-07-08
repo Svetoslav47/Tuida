@@ -47,12 +47,12 @@ const ContactForm: React.FC = () => {
         </div>
         <div>
           <h4 className="text-sm font-medium mb-1 sm:mb-2">Телефон</h4>
-          <p className="text-sm sm:text-base text-gray-600">+359 89 251 7200</p>
+          <p className="text-sm sm:text-base text-gray-600">+359 892 517 200</p>
         </div>
         <div className="sm:col-span-2 md:col-span-1">
           <h4 className="text-sm font-medium mb-1 sm:mb-2">Адрес</h4>
           <p className="text-sm sm:text-base text-gray-600">
-            ул. Братя Миладинови 27, офис Явлена
+            гр. Варна, ул. Братя Миладинови 27, офис Явлена
           </p>
         </div>
       </div>

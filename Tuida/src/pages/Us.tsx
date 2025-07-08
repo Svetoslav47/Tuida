@@ -6,10 +6,9 @@ const Us: React.FC = () => {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '',
   });
-
   const center = {
-    lat: 42.699644,
-    lng: 23.317455
+    lat: 43.20809798366401,
+    lng: 27.919050709217114
   };
 
   return (

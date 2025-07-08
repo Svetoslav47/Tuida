@@ -160,7 +160,7 @@ const Home: React.FC = () => {
         </div>
       </div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 py-8 sm:py-16">
-        <div className="">
+        <div className="mb-20 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl font-light mb-6 sm:mb-8">Разпределение</h2>
           <div className="flex flex-wrap gap-2 sm:space-x-4 mb-6 sm:mb-8">
             {floorPlans.map((floor) => (
@@ -189,8 +189,8 @@ const Home: React.FC = () => {
               </ul>
             </div>
             <div className="w-full lg:w-5/12 lg:pl-8 flex flex-col items-center">
-              <div className="cursor-zoom-in w-full max-w-md lg:max-w-none flex items-center justify-center" onClick={() => setZoomOpen(true)}>
-                <FloorPlan image={floorPlans[activeFloor].image} className="w-full h-auto max-h-96 lg:max-h-none border-0" />
+              <div className="cursor-zoom-in w-full max-w-md lg:max-w-none flex items-center justify-center mb-4 sm:mb-0" onClick={() => setZoomOpen(true)}>
+                <FloorPlan image={floorPlans[activeFloor].image} className="w-full h-auto border-0" />
               </div>
             </div>
           </div>
@@ -205,7 +205,9 @@ const Home: React.FC = () => {
             </div>
           )}
         </div>
-        <ContactForm />
+        <div className="w-full block">
+          <ContactForm />
+        </div>
       </div>
     </div>
   )

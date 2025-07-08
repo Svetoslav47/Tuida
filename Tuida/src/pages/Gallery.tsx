@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
 interface GalleryItem {
@@ -11,6 +11,9 @@ interface GalleryItem {
 const Gallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null)
   const [mounted, setMounted] = useState(false)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setMounted(true)
@@ -79,11 +82,74 @@ const Gallery: React.FC = () => {
     document.body.style.overflow = 'unset'
   }
 
+  const goToNext = () => {
+    if (!selectedImage) return
+    const currentIndex = galleryItems.findIndex(item => item.id === selectedImage.id)
+    const nextIndex = (currentIndex + 1) % galleryItems.length
+    setSelectedImage(galleryItems[nextIndex])
+  }
+
+  const goToPrevious = () => {
+    if (!selectedImage) return
+    const currentIndex = galleryItems.findIndex(item => item.id === selectedImage.id)
+    const previousIndex = currentIndex === 0 ? galleryItems.length - 1 : currentIndex - 1
+    setSelectedImage(galleryItems[previousIndex])
+  }
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (!selectedImage) return
+    
+    switch (e.key) {
+      case 'Escape':
+        closeModal()
+        break
+      case 'ArrowRight':
+        goToNext()
+        break
+      case 'ArrowLeft':
+        goToPrevious()
+        break
+    }
+  }
+
+  // Touch handlers for mobile swipe
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe) {
+      goToNext()
+    }
+    if (isRightSwipe) {
+      goToPrevious()
+    }
+  }
+
+  useEffect(() => {
+    if (selectedImage) {
+      document.addEventListener('keydown', handleKeyDown)
+      return () => document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [selectedImage])
+
   const ModalPortal = () => {
     if (!mounted || !selectedImage) return null
 
     return createPortal(
       <div 
+        ref={modalRef}
         style={{
           position: 'fixed',
           top: 0,
@@ -98,7 +164,67 @@ const Gallery: React.FC = () => {
           padding: '20px'
         }}
         onClick={closeModal}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
       >
+        {/* Navigation Buttons */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation()
+            goToPrevious()
+          }}
+          style={{
+            position: 'absolute',
+            left: '20px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: '50px',
+            height: '50px',
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '50%',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '24px',
+            zIndex: 1000
+          }}
+          className="hover:bg-black/80 transition-colors"
+        >
+          ‹
+        </button>
+
+        <button
+          onClick={(e) => {
+            e.stopPropagation()
+            goToNext()
+          }}
+          style={{
+            position: 'absolute',
+            right: '20px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: '50px',
+            height: '50px',
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '50%',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '24px',
+            zIndex: 1000
+          }}
+          className="hover:bg-black/80 transition-colors"
+        >
+          ›
+        </button>
+
         <div style={{ position: 'relative', maxWidth: '90vw', maxHeight: '90vh' }}>
           {/* Close Button */}
           <button
@@ -117,8 +243,10 @@ const Gallery: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '20px'
+              fontSize: '20px',
+              zIndex: 1000
             }}
+            className="hover:bg-black/80 transition-colors"
           >
             ✕
           </button>
@@ -134,6 +262,26 @@ const Gallery: React.FC = () => {
             }}
             onClick={(e) => e.stopPropagation()}
           />
+
+          {/* Image Info */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '-60px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              textAlign: 'center',
+              color: 'white',
+              zIndex: 1000
+            }}
+          >
+            <h3 style={{ fontSize: '18px', fontWeight: '300', margin: '0 0 4px 0' }}>
+              {selectedImage.title}
+            </h3>
+            <p style={{ fontSize: '14px', opacity: 0.8, margin: 0 }}>
+              {selectedImage.category}
+            </p>
+          </div>
         </div>
       </div>,
       document.body
