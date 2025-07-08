@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import YourHome from "./pages/YourHome";
@@ -46,8 +46,27 @@ export function App() {
             component: <Us />,
         }
     ];
-    // Create an array of hooks for each section
-    const popInHooks = sections.map(() => usePopInOnScroll());
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    useEffect(() => {
+        scrollToTop();
+    }, []);
+
+    // Create individual hooks for each section
+    const popInHook0 = usePopInOnScroll();
+    const popInHook1 = usePopInOnScroll();
+    const popInHook2 = usePopInOnScroll();
+    const popInHook3 = usePopInOnScroll();
+    const popInHook4 = usePopInOnScroll();
+    const popInHook5 = usePopInOnScroll();
+    
+    const popInHooks = [popInHook0, popInHook1, popInHook2, popInHook3, popInHook4, popInHook5];
+    
+
+
     return (
       <LanguageProvider>
       <Routes>
@@ -55,10 +74,13 @@ export function App() {
             <Navigation
                 sections={sections.map((s) => s.title)}
                 activeSection={activeSection}
-                setActiveSection={setActiveSection}
+                setActiveSection={(idx) => {
+                    setActiveSection(idx);
+                    scrollToTop();
+                }}
             />
             <div
-                className="w-full h-full transition-transform duration-500 flex"
+                className="w-full h-fit transition-transform duration-500 flex"
                 style={{
                     transform: `translateX(-${activeSection * 100}%)`,
                 }}
@@ -69,7 +91,10 @@ export function App() {
                         <div
                             key={section.id}
                             ref={ref}
-                            className={`min-w-full h-full ${isVisible ? "pop-in" : "pop-in-hidden"}`}
+                            className={`min-w-full ${isVisible ? "pop-in" : "pop-in-hidden"}`}
+                            style={{
+                                height: `${idx === activeSection ? "fit-content" : "100vh"}`,
+                            }}
                         >
                             {section.component}
                         </div>
