@@ -23,15 +23,6 @@ const YourHome: React.FC = () => {
           {/* Overlay with gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
           
-          {/* Top content overlay */}
-          <div className="absolute top-0 left-0 right-0 flex flex-col items-center text-white text-center px-4 sm:px-8 pt-8 sm:pt-12">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-1 sm:mb-2 tracking-wide">
-              ТУИДА ХОУМС
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl font-light max-w-2xl sm:max-w-3xl leading-relaxed tracking-widest">
-              Твоят дом сред природата
-            </p>
-          </div>
           
           {/* Bottom content overlay */}
           <div className="absolute bottom-0 left-0 right-0 hidden sm:flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center text-white text-center px-4 sm:px-8 pb-4 sm:pb-6">
