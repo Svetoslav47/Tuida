@@ -5,6 +5,7 @@ import {
   KeyIcon,
   LightbulbIcon,
   BuildingIcon,
+  Car,
 } from 'lucide-react'
 interface Feature {
   icon: React.ReactNode
@@ -42,6 +43,12 @@ const FeatureHighlights: React.FC = () => {
       title: 'Премиум строителство',
       description:
         'Високотехнологично строителство, изпълнено с първокласни материали за трайно качество.',
+    },
+    {
+      icon: <Car size={24} />,
+      title: 'Парко места',
+      description:
+        'Всяка къща разполага с две парко места',
     },
   ]
   return (

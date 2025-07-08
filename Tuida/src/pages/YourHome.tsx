@@ -24,7 +24,6 @@ const YourHome: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
           
           
-          
           {/* Bottom content overlay */}
           <div className="absolute bottom-0 left-0 right-0 hidden sm:flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center text-white text-center px-4 sm:px-8 pb-4 sm:pb-6">
             <div className="flex items-center gap-2 text-sm sm:text-base">
@@ -46,7 +45,7 @@ const YourHome: React.FC = () => {
         <div className="mb-12 sm:mb-16">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-light mb-4 sm:mb-6">
-              Вашият дом
+              Твоят дом
             </h2>
             <p className="text-gray-600 text-sm sm:text-base leading-relaxed text-justify">
               TUIDA HOMES е бутиков комплекс, който впечатлява с внимателно подбрана локация и

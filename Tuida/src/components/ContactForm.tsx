@@ -6,7 +6,7 @@ const ContactForm: React.FC = () => {
       {/* Явлена Logo */}
       <div className="mb-6 sm:mb-8 flex items-center gap-3 sm:gap-4">
         <img 
-          src="/logoTuida.png" 
+          src="/QvlenaLogo.jpg" 
           alt="Явлена Logo" 
           className="h-10 sm:h-12 w-auto opacity-80"
         />

@@ -1,18 +1,14 @@
 import React from 'react';
-import PhotoCard from '../components/PhotoCard';
+// import PhotoCard from '../components/PhotoCard';
 import VideoPlayer from '../components/VideoPlayer';
 
 const Progress: React.FC = () => {
   return <div className="px-4 sm:px-6 md:px-12 lg:px-16 py-4 sm:py-6 h-full overflow-y-auto">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-xl sm:text-2xl font-light mb-4 sm:mb-8">Прогрес</h1>
+
         <VideoPlayer videoUrl="/video.mp4" title="ТУИДА - Строителен прогрес" description="Следете развитието на нашия жилищен комплекс от началото до завършването. Вижте как внимателно планираните етапи на строителството се превръщат в модерни жилищни пространства." />
-        <PhotoCard image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1772&q=80" title="Foundation Phase - Completed March 2023" description="The foundation phase established the structural groundwork for the entire complex. This critical first step involved extensive site preparation, excavation, and the pouring of concrete foundations. Our engineering team implemented innovative solutions to ensure structural integrity while maximizing space efficiency. This phase was completed on schedule, setting a solid foundation for the subsequent construction stages." />
-        <PhotoCard image="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80" title="Structural Framework - Completed July 2023" description="The structural framework phase saw the buildings begin to take shape as steel and concrete elements were installed. This phase included the erection of the main structural components, including columns, beams, and floor slabs. Our team worked diligently to ensure precise alignment and structural integrity, creating the framework that will support the distinctive architectural elements of the complex." position="left" />
-        <PhotoCard image="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1700&q=80" title="Exterior Cladding - In Progress" description="Currently, we are installing the exterior cladding systems that will define the visual identity of the complex. This phase includes the application of facade materials, installation of windows and doors, and weatherproofing. The minimalist design features clean lines and a carefully curated palette of materials that create visual interest while maintaining elegant simplicity. This phase is expected to be completed by November 2023." />
-        <PhotoCard image="https://images.unsplash.com/photo-1593201464350-96ec57065aa8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" title="Interior Work - Starting October 2023" description="The interior work phase will begin next month, focusing on creating the refined living spaces within each residence. This phase includes the installation of interior walls, electrical and plumbing systems, HVAC equipment, and preliminary finishes. Our design team is working closely with craftspeople to ensure that every detail aligns with our vision of modern, functional luxury. This phase is scheduled to continue through March 2024." position="left" />
-        <PhotoCard image="https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" title="Final Completion - Expected June 2024" description="The project is on schedule for final completion in June 2024. During the final phase, we will install premium fixtures and finishes, complete landscaping, and conduct rigorous quality assurance testing. Each residence will undergo detailed inspection to ensure it meets our exacting standards. We look forward to welcoming residents to their new homes next summer." />
-      </div>
+        </div>
     </div>;
 };
 export default Progress;
