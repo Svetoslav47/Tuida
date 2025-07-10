@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Layout from "./components/Layout";
 import YourHome from "./pages/YourHome";
 import Houses from "./pages/Houses";
@@ -69,41 +71,42 @@ export function App() {
 
     return (
       <LanguageProvider>
-      <Routes>
-        <Route path="/" element={<Layout onLogoClick={() => setActiveSection(0)}>
-            <Navigation
-                sections={sections.map((s) => s.title)}
-                activeSection={activeSection}
-                setActiveSection={(idx) => {
-                    setActiveSection(idx);
-                    scrollToTop();
-                }}
-            />
-            <div
-                className="w-full h-fit transition-transform duration-500 flex"
-                style={{
-                    transform: `translateX(-${activeSection * 100}%)`,
-                }}
-            >
-                {sections.map((section, idx) => {
-                    const { ref, isVisible } = popInHooks[idx];
-                    return (
-                        <div
-                            key={section.id}
-                            ref={ref}
-                            className={`min-w-full ${isVisible ? "pop-in" : "pop-in-hidden"}`}
-                            style={{
-                                height: `${idx === activeSection ? "fit-content" : "100vh"}`,
-                            }}
-                        >
-                            {section.component}
-                        </div>
-                    );
-                })}
-            </div>
-        </Layout>} />
-        <Route path="/:houseName" element={<Home />} />
-        </Routes>
+        <ToastContainer />
+        <Routes>
+          <Route path="/" element={<Layout onLogoClick={() => setActiveSection(0)}>
+              <Navigation
+                  sections={sections.map((s) => s.title)}
+                  activeSection={activeSection}
+                  setActiveSection={(idx) => {
+                      setActiveSection(idx);
+                      scrollToTop();
+                  }}
+              />
+              <div
+                  className="w-full h-fit transition-transform duration-500 flex"
+                  style={{
+                      transform: `translateX(-${activeSection * 100}%)`,
+                  }}
+              >
+                  {sections.map((section, idx) => {
+                      const { ref, isVisible } = popInHooks[idx];
+                      return (
+                          <div
+                              key={section.id}
+                              ref={ref}
+                              className={`min-w-full ${isVisible ? "pop-in" : "pop-in-hidden"}`}
+                              style={{
+                                  height: `${idx === activeSection ? "fit-content" : "100vh"}`,
+                              }}
+                          >
+                              {section.component}
+                          </div>
+                      );
+                  })}
+              </div>
+          </Layout>} />
+          <Route path="/:houseName" element={<Home />} />
+          </Routes>
         </LanguageProvider>
     );
 }

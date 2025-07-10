@@ -306,7 +306,7 @@
         ]
       }
     },
-    "image": "k4.webp",
+    "image": "k5.webp",
     "number_of_parking_spaces": 2,
     "number_of_bedrooms": 4,
     "vertices": [
@@ -436,7 +436,7 @@
   {
     "id": 8,
     "name": "Белатрикс",
-    "house_area": 260.8,
+    "house_area": 274.9,
     "full_area": 590.89,
     "price": null,
     "state": "free",
@@ -447,7 +447,7 @@
         "rooms": [
           { "name": "Веранда", "area": 14.1 },
           { "name": "Дневна с Кухня", "area": 61.6 },
-          { "name": "Кабинет", "area": 19.7 },
+          { "name": "Кабинет/спалня", "area": 19.7 },
           { "name": "Сервизно Помещение", "area": 9 },
           { "name": "Дрешник", "area": 4.6 },
           { "name": "WC", "area": 2.4 }
@@ -473,7 +473,7 @@
     },
     "image": "k4.webp",
     "number_of_parking_spaces": 2,
-    "number_of_bedrooms": 4,
+    "number_of_bedrooms": 5,
     "vertices": [
       { "x": 3425, "y": 966 },
       { "x": 3941, "y": 960 },
@@ -546,7 +546,7 @@
   {
     "id": 10,
     "name": "Некар",
-    "house_area": 260.8,
+    "house_area": 274.9,
     "full_area": 609.12,
     "price": null,
     "state": "free",

@@ -410,6 +410,7 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
     if (imageName.includes('k2')) return 'Тип 2'
     if (imageName.includes('k3')) return 'Тип 3'
     if (imageName.includes('k4')) return 'Тип 4'
+    if (imageName.includes('k5')) return 'Тип 5'
     return 'Неизвестен тип'
   }
 
@@ -465,7 +466,7 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
                   <div className="flex justify-between">
                     <span>Статус:</span>
                     <span className="font-light">
-                      {house.state === 'free' ? 'Свободна' : 'Заета'}
+                      {house.state === 'free' ? 'Свободна' : 'Продадена'}
                     </span>
                   </div>
                 </div>
@@ -657,7 +658,7 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
                     <div className="flex justify-between">
                       <span>Статус: </span>
                       <span className={`font-medium ml-1`}>
-                        {activeHouseData.state === 'free' ? 'Свободна' : 'Заета'}
+                        {activeHouseData.state === 'free' ? 'Свободна' : 'Продадена'}
                       </span>
                     </div>
                   </div>

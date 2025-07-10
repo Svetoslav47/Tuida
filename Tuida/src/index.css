@@ -54,3 +54,7 @@ body {
 .group:hover .dot-opacity {
   opacity: 0.6;
 }
+
+p {
+  text-align: justify;
+}

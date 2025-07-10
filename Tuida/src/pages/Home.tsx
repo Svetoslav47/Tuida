@@ -96,6 +96,7 @@ const Home: React.FC = () => {
     if (imageName.includes('k2')) return 'Тип 2'
     if (imageName.includes('k3')) return 'Тип 3'
     if (imageName.includes('k4')) return 'Тип 4'
+    if (imageName.includes('k5')) return 'Тип 5'
     return 'Неизвестен тип'
   }
 
@@ -145,7 +146,7 @@ const Home: React.FC = () => {
               <FaExpand className="text-xl sm:text-3xl flex-shrink-0" />
               <div className="flex flex-col">
                 <span className="text-sm sm:text-base font-medium">РЗП: {houseData.house_area} м²</span>
-                <span className="text-sm sm:text-base font-medium">Площ на имота: {houseData.full_area} м²</span>
+                <span className="text-sm sm:text-base font-medium">Площ на парцела: {houseData.full_area} м²</span>
               </div>
             </div>
             <div className="flex items-center gap-2" style={{textShadow: '2px 2px 8px rgba(0,0,0,0.95)'}}>

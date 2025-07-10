@@ -39,7 +39,11 @@ const Houses: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         <h1 className="text-xl sm:text-2xl font-light mb-4 sm:mb-8">Къщите</h1>
         <p className="text-sm sm:text-base text-gray-600 max-w-2xl mb-8 sm:mb-12">
-          Разгледайте нашите къщи на интерактивната карта. Кликнете върху всяка къща, за да видите подробна информация за нея.
+          <span className="hidden sm:inline">Разгледайте нашите къщи на интерактивната карта. Кликнете върху всяка къща, за да видите подробна информация за нея.</span>
+          <span className="sm:hidden">Разгледайте списъка с нашите къщи. Кликнете върху всяка къща, за да видите подробна информация за нея.</span>
+        </p>
+        <p className="text-sm sm:text-base text-gray-600 max-w-2xl mb-8 sm:mb-12">
+          Не се дължи комисионно възнаграждение при закупуване на къща в комплекса.
         </p>
         <InteractiveMap onHouseClick={(houseId) => {
           navigate(`/${houseId}`)
