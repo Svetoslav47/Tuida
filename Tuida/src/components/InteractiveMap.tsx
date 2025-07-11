@@ -420,6 +420,14 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
   // Clean mobile house list component
   const CleanMobileHouseList = () => (
     <div className="w-full my-8 sm:my-16">
+      {/* AllHousesNames image - mobile only */}
+      <div className="mb-8">
+        <img
+          src="/AllHousesNames.webp"
+          alt="All Houses Names"
+          className="w-full h-auto"
+        />
+      </div>
       <h2 className="text-xl sm:text-2xl font-light mb-8 sm:mb-12 text-center">Къщи в комплекса</h2>
       <div className="space-y-6">
         {houses.map((house) => (
