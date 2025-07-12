@@ -308,7 +308,7 @@
     },
     "image": "k5.webp",
     "number_of_parking_spaces": 2,
-    "number_of_bedrooms": 4,
+    "number_of_bedrooms": 5,
     "vertices": [
       { "x": 4851, "y": 1991 },
       { "x": 5306, "y": 1979 },
@@ -583,7 +583,7 @@
     },
     "image": "k4.webp",
     "number_of_parking_spaces": 2,
-    "number_of_bedrooms": 4,
+    "number_of_bedrooms": 5,
     "vertices": [
       { "x": 2764, "y": 681 },
       { "x": 3213, "y": 681 },
