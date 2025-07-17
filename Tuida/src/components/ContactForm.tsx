@@ -17,7 +17,7 @@ const ContactForm: React.FC = () => {
     };
 
     try {
-      const response = await fetch('https://meaga-qkiq-form-server-na-esa.vercel.app/postform/tuida', {
+      const response = await fetch('https://www.simplyform.dev/api/form/submit/813342cd-91a4-4eda-905b-4540993f0422', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
