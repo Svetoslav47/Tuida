@@ -610,7 +610,7 @@
     "first_floor": {
       "short_description": "Дневна с кухня, тоалетна, дрешник, техническо помещение, антре, веранда",
       "floor_plan": {
-        "image": "k3Plan1.jpg",
+        "image": "k3Plan1.webp",
         "rooms": [
           { "name": "Веранда", "area": 21.8 },
           { "name": "Дневна с Кухня", "area": 55.5 },
@@ -624,7 +624,7 @@
     "second_floor": {
       "short_description": "2 спални със собствени бани, 2 спални, баня, мокро помещение, коридор",
       "floor_plan": {
-        "image": "k3Plan2.jpg",
+        "image": "k3Plan2.webp",
         "rooms": [
           { "name": "Спалня", "area": 13.4 },
           { "name": "Баня", "area": 4.7 },
