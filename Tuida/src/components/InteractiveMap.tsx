@@ -474,7 +474,7 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
                   <div className="flex justify-between">
                     <span>Статус:</span>
                     <span className="font-light">
-                      {house.state === 'free' ? 'Свободна' : 'Продадена'}
+                      {house.state === 'free' ? 'Свободна' : house.state === 'reserved' ? 'Резервирана' : 'Продадена'}
                     </span>
                   </div>
                 </div>
@@ -666,7 +666,7 @@ ${updatedHouse.vertices.map(v => `    { x: ${v.x}, y: ${v.y} }`).join(',\n')}
                     <div className="flex justify-between">
                       <span>Статус: </span>
                       <span className={`font-medium ml-1`}>
-                        {activeHouseData.state === 'free' ? 'Свободна' : 'Продадена'}
+                        {activeHouseData.state === 'free' ? 'Свободна' : activeHouseData.state === 'reserved' ? 'Резервирана' : 'Продадена'}
                       </span>
                     </div>
                   </div>

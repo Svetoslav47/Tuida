@@ -715,7 +715,7 @@
     "house_area": 205.3,
     "full_area": 511.6,
     "price": null,
-    "state": "free",
+    "state": "reserved",
     "first_floor": {
       "short_description": "Дневна с кухня, тоалетна, дрешник, техническо помещение, антре, веранда",
       "floor_plan": {
@@ -888,7 +888,7 @@
     "house_area": 205.3,
     "full_area": 405,
     "price": null,
-    "state": "free",
+    "state": "reserved",
     "first_floor": {
       "short_description": "Дневна с кухня, тоалетна, дрешник, техническо помещение, антре, веранда",
       "floor_plan": {
