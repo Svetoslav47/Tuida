@@ -47,6 +47,9 @@ const LocationMap: React.FC<LocationMapProps> = ({
           center={center }
           zoom={14}
           mapTypeId={google.maps.MapTypeId.HYBRID}
+          options={{
+            gestureHandling: 'greedy'
+          }}
         >
           {markers?.map((marker, idx) => (
             <Marker
