@@ -260,7 +260,7 @@ const Progress: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         <h1 className="text-xl sm:text-2xl font-light mb-4 sm:mb-8">Прогрес</h1>
 
-        <VideoPlayer videoUrl="/video.mp4" title="ТУИДА - Строителен прогрес" description="Следете развитието на нашия жилищен комплекс от началото до завършването. Вижте как внимателно планираните етапи на строителството се превръщат в модерни жилищни пространства." />
+        <VideoPlayer videoUrl="/videoMain.mp4" title="ТУИДА - Строителен прогрес" description="Следете развитието на нашия жилищен комплекс от началото до завършването. Вижте как внимателно планираните етапи на строителството се превръщат в модерни жилищни пространства." />
         
         <div className="mt-8 sm:mt-12">
           <h2 className="text-xl sm:text-2xl font-light mb-6 sm:mb-8">Снимки от строителството</h2>
