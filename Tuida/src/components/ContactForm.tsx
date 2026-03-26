@@ -59,18 +59,6 @@ const ContactForm: React.FC = () => {
   return <div className="w-full my-8 sm:my-16">
     <h3 className="text-lg sm:text-xl font-light mb-6 sm:mb-8">Свържи се с нас</h3>
 
-    {/* Явлена Logo */}
-    <div className="mb-6 sm:mb-8 flex items-center gap-3 sm:gap-4">
-      <img
-        src="/QvlenaLogo.jpg"
-        alt="Явлена Logo"
-        className="h-10 sm:h-12 w-auto opacity-80"
-      />
-      <div>
-        <h4 className="text-base sm:text-lg font-medium">Явлена</h4>
-        <p className="text-xs sm:text-sm text-gray-600">Официален партньор</p>
-      </div>
-    </div>
     <form ref={formRef} className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         <div>
@@ -107,13 +95,7 @@ const ContactForm: React.FC = () => {
       </div>
       <div>
         <h4 className="text-sm font-medium mb-1 sm:mb-2">Телефон</h4>
-        <p className="text-sm sm:text-base text-gray-600">+359 892 517 200</p>
-      </div>
-      <div className="sm:col-span-2 md:col-span-1">
-        <h4 className="text-sm font-medium mb-1 sm:mb-2">Адрес</h4>
-        <p className="text-sm sm:text-base text-gray-600">
-          гр. Варна, ул. Братя Миладинови 27, офис Явлена
-        </p>
+        <p className="text-sm sm:text-base text-gray-600">+359 879 108 333</p>
       </div>
     </div>
   </div>;

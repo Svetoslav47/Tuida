@@ -37,10 +37,10 @@ const Navigation: React.FC<NavigationProps> = ({
           </div>
           <div className="flex items-center space-x-6">
             <a
-              href="tel:+359892517200"
+              href="tel:+359879108333"
               className="text-sm tracking-wider pb-2 text-gray-400 hover:text-gray-800 transition-all"
             >
-              +359 892 517 200
+              +359 879 108 333
             </a>
             {/* <button
               onClick={toggleLanguage}
@@ -68,10 +68,10 @@ const Navigation: React.FC<NavigationProps> = ({
 
           {/* Phone Number on Mobile */}
           <a
-            href="tel:+359892517200"
+            href="tel:+359879108333"
             className="text-sm tracking-wider text-gray-400 hover:text-gray-800 transition-all"
           >
-            +359 892 517 200
+            +359 879 108 333
           </a>
         </div>
 
